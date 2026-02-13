@@ -1,38 +1,78 @@
-const audio = document.getElementById('my-audio');
-const playBtn = document.getElementById('play-btn');
-const seekBar = document.getElementById('seek-bar');
-const volumeBar = document.getElementById('volume-bar');
-const musicItem = document.querySelector('.music-icon');
+const players = document.querySelectorAll('.music-item');
 
-// 再生・一時停止
-playBtn.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-    playBtn.textContent = '⏸';
-    musicItem.classList.add('spin');
-  } else {
-    audio.pause();
-    playBtn.textContent = '▶';
-    musicItem.classList.remove('spin');
+players.forEach((player) => {
+  const audio = player.querySelector('audio');
+  const playBtn = player.querySelector('.play-btn');
+  const seekBar = player.querySelector('.seek-bar');
+  const volumeBar = player.querySelector('.volume-bar');
+  const musicIcon = player.querySelector('.music-icon');
+
+  let rotation = 0;
+  let spinning = false;
+  let animationFrameId = null;
+
+  function rotateCD() {
+    if (!spinning) return;
+    rotation += 0.1;
+    musicIcon.style.transform = `rotate(${rotation}deg)`;
+    animationFrameId = requestAnimationFrame(rotateCD);
   }
-});
 
-// シークバー更新
-audio.addEventListener('timeupdate', () => {
-  seekBar.value = audio.currentTime;
-});
+  function stopOtherPlayers() {
+    players.forEach((otherPlayer) => {
+      if (otherPlayer !== player) {
+        const otherAudio = otherPlayer.querySelector('audio');
+        const otherPlayBtn = otherPlayer.querySelector('.play-btn');
+        const otherIcon = otherPlayer.querySelector('.music-icon');
 
-// シークバーの最大値を音声の長さに設定
-audio.addEventListener('loadedmetadata', () => {
-  seekBar.max = audio.duration;
-});
+        otherAudio.pause();
+        otherPlayBtn.textContent = '▶';
+        otherIcon.style.transform = otherIcon.style.transform || 'rotate(0deg)';
+        cancelAnimationFrame(otherPlayer._animationFrameId);
+        otherPlayer._spinning = false;
+      }
+    });
+  }
 
-// シークバー操作
-seekBar.addEventListener('input', () => {
-  audio.currentTime = seekBar.value;
-});
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      stopOtherPlayers();
+      audio.play();
+      playBtn.textContent = '⏸';
+      spinning = true;
+      player._spinning = true;
+      rotateCD();
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶';
+      spinning = false;
+      cancelAnimationFrame(animationFrameId);
+    }
+  });
 
-// 音量バー操作
-volumeBar.addEventListener('input', () => {
-  audio.volume = volumeBar.value;
+  audio.addEventListener('ended', () => {
+    playBtn.textContent = '▶';
+    spinning = false;
+    cancelAnimationFrame(animationFrameId);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    seekBar.value = audio.currentTime;
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    seekBar.max = audio.duration;
+  });
+
+  seekBar.addEventListener('input', () => {
+    audio.currentTime = seekBar.value;
+  });
+
+  volumeBar.addEventListener('input', () => {
+    audio.volume = volumeBar.value;
+  });
+
+  // プレイヤーごとの状態を保存
+  player._animationFrameId = animationFrameId;
+  player._spinning = spinning;
 });

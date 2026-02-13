@@ -2,29 +2,19 @@
     width: 700px;
     height: 250px;
     background-color: #253045;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
 .music-icon{
     width: 200px;
     height: 200px;
-    background-color: aqua;
     background-image: url('../image/main1.png');
     border-radius: 50%;
     border: 2px solid #253045;
     position: relative;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-    }
-
-.music-icon.spin {
-    animation: spin 3s linear infinite;
 }
 
 .cd-inner{
@@ -65,6 +55,7 @@
     background: #c4cfd6;
     outline: none;
 }
+
 
 #seek-bar {
     flex: 1;
