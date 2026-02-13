@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/music.css">
+</head>
+
+<body>
+<header>
+    <div class="nav-container">
+        <h1 class="logo">ポートフォリオ</h1>
+        <nav>
+        <ul class="nav-links">
+            <li><a href="#home">ホーム</a></li>
+            <li><a href="#games">ゲーム</a></li>
+            <li><a href="#sites">サイト</a></li>
+            <li><a href="#music">音楽</a></li>
+        </ul>
+        </nav>
+    </div>
+
+    <section class="hero">
+    <img src="image/main1.png" alt="メインビジュアル" class="hero-image">
+    </section>
+
+</header>
+
+    <main>
+        <div class="music-content">
+            <div class="music-item">
+                <div class="music-icon">
+                    <div class="cd-inner"></div>
+                </div>
+
+                <div class="music-info">
+                    <h2 class="music-title">曲名1</h2>
+                    <div class="custom-player">
+                    <audio id="my-audio">
+                        <source src="audio/TETORAop.mp3" type="audio/mpeg">
+                        お使いのブラウザはaudio要素をサポートしていません。
+                    </audio>
+
+                    <button id="play-btn">▶</button>
+                    <input type="range" id="seek-bar" value="0" min="0" step="0.1">
+                    <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="js/music.js"></script>
+</body>
+
+</html>

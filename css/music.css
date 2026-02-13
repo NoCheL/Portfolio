@@ -1,0 +1,75 @@
+.music-item{
+    width: 700px;
+    height: 250px;
+    background-color: #253045;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.music-icon{
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+    background-image: url('../image/main1.png');
+    border-radius: 50%;
+    border: 2px solid #253045;
+    position: relative;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+.music-icon.spin {
+    animation: spin 3s linear infinite;
+}
+
+.cd-inner{
+    width: 60px;
+    height: 60px;
+    background-color: silver;
+    border-radius: 50%;
+    border: 4px solid #253045;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-player {
+    background-color: #253045;
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: #c4cfd6;
+}
+
+#play-btn {
+    background-color: #00c6c6;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#seek-bar, #volume-bar {
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #c4cfd6;
+    outline: none;
+}
+
+#seek-bar {
+    flex: 1;
+}
+
+#volume-bar {
+    width: 100px;
+}
