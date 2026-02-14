@@ -1,66 +1,122 @@
-.music-item{
-    width: 700px;
-    height: 250px;
-    background-color: #253045;
-    border-radius: 20px;
+/* 全体のカード */
+.music-item {
+    width: 650px;
+    height: 220px;
+    background: linear-gradient(145deg, #2a374f, #212b3e); /* グラデーションで立体感 */
+    border-radius: 30px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 30px;
+    box-shadow: 20px 20px 60px #1a2231, -5px -5px 20px #303e59;
+    color: white;
+    font-family: sans-serif;
 }
 
-.music-icon{
-    width: 200px;
-    height: 200px;
-    background-image: url('../image/main1.png');
+/* CDアイコンのラッパー */
+.music-icon-wrapper {
+    perspective: 1000px;
+}
+
+.music-icon {
+    width: 160px;
+    height: 160px;
+    background-image: 
+        radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,0.4) 100%),
+        url('../image/main1.png');
+    background-size: cover;
     border-radius: 50%;
-    border: 2px solid #253045;
+    border: 5px solid #1a2231;
     position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* アニメーション：再生時にクラスを付与する想定 */
+    animation: rotate-cd 5s linear infinite;
+    animation-play-state: paused; /* デフォルトは停止 */
 }
 
-.cd-inner{
-    width: 60px;
-    height: 60px;
-    background-color: silver;
+/* 再生中にこのクラスをJSで付与 */
+.is-playing .music-icon {
+    animation-play-state: running;
+}
+
+@keyframes rotate-cd {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.cd-inner {
+    width: 40px;
+    height: 40px;
+    background: #c0c0c0;
+    background: radial-gradient(circle, #fff 0%, #888 100%);
     border-radius: 50%;
-    border: 4px solid #253045;
+    border: 3px solid #253045;
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 }
 
+/* 情報エリア */
+.music-info {
+    margin-left: 40px;
+    flex-grow: 1;
+}
+
+.music-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.artist-name {
+    font-size: 0.9rem;
+    color: #00c6c6;
+    margin-bottom: 15px;
+}
+
+/* プレイヤー部分 */
 .custom-player {
-    background-color: #253045;
-    padding: 1em;
-    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 1em;
-    color: #c4cfd6;
+    gap: 15px;
 }
 
-#play-btn {
-    background-color: #00c6c6;
-    color: #fff;
+.play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     border: none;
-    padding: 8px 16px;
-    font-size: 1.2em;
-    border-radius: 5px;
+    background: #00c6c6;
+    color: white;
     cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.2rem;
 }
 
-#seek-bar, #volume-bar {
-    appearance: none;
-    height: 6px;
-    border-radius: 3px;
-    background: #c4cfd6;
-    outline: none;
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 198, 198, 0.5);
 }
 
-
-#seek-bar {
-    flex: 1;
+.controls-group {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#volume-bar {
-    width: 100px;
+/* スライダーの見た目 */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: rgba(255,255,255,0.1);
+    height: 4px;
+    border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #00c6c6;
+    border-radius: 50%;
+    cursor: pointer;
 }

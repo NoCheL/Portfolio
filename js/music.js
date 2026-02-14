@@ -5,74 +5,66 @@ players.forEach((player) => {
   const playBtn = player.querySelector('.play-btn');
   const seekBar = player.querySelector('.seek-bar');
   const volumeBar = player.querySelector('.volume-bar');
-  const musicIcon = player.querySelector('.music-icon');
 
-  let rotation = 0;
-  let spinning = false;
-  let animationFrameId = null;
-
-  function rotateCD() {
-    if (!spinning) return;
-    rotation += 0.1;
-    musicIcon.style.transform = `rotate(${rotation}deg)`;
-    animationFrameId = requestAnimationFrame(rotateCD);
-  }
-
-  function stopOtherPlayers() {
+  // 他のプレイヤーをすべて停止させる関数
+  function stopAllOtherPlayers() {
     players.forEach((otherPlayer) => {
       if (otherPlayer !== player) {
         const otherAudio = otherPlayer.querySelector('audio');
-        const otherPlayBtn = otherPlayer.querySelector('.play-btn');
-        const otherIcon = otherPlayer.querySelector('.music-icon');
-
+        const otherBtn = otherPlayer.querySelector('.play-btn');
+        
         otherAudio.pause();
-        otherPlayBtn.textContent = '▶';
-        otherIcon.style.transform = otherIcon.style.transform || 'rotate(0deg)';
-        cancelAnimationFrame(otherPlayer._animationFrameId);
-        otherPlayer._spinning = false;
+        otherBtn.textContent = '▶';
+        otherPlayer.classList.remove('is-playing'); // 回転を止める
       }
     });
   }
 
+  // 再生・一時停止の切り替え
   playBtn.addEventListener('click', () => {
     if (audio.paused) {
-      stopOtherPlayers();
+      stopAllOtherPlayers();
       audio.play();
       playBtn.textContent = '⏸';
-      spinning = true;
-      player._spinning = true;
-      rotateCD();
+      player.classList.add('is-playing'); // CSSで回転開始
     } else {
       audio.pause();
       playBtn.textContent = '▶';
-      spinning = false;
-      cancelAnimationFrame(animationFrameId);
+      player.classList.remove('is-playing'); // CSSで回転停止
     }
   });
 
+  // 音声が終わった時の処理
   audio.addEventListener('ended', () => {
     playBtn.textContent = '▶';
-    spinning = false;
-    cancelAnimationFrame(animationFrameId);
+    player.classList.remove('is-playing');
+    seekBar.value = 0;
   });
 
+  // シークバーの連動（再生中）
   audio.addEventListener('timeupdate', () => {
-    seekBar.value = audio.currentTime;
+    if (!seekBar._isDragging) { // ドラッグ中でなければ更新
+      seekBar.value = audio.currentTime;
+    }
   });
 
+  // メタデータ読み込み完了時に最大値を設定
   audio.addEventListener('loadedmetadata', () => {
     seekBar.max = audio.duration;
   });
 
+  // シークバー操作
   seekBar.addEventListener('input', () => {
-    audio.currentTime = seekBar.value;
+    seekBar._isDragging = true;
   });
 
+  seekBar.addEventListener('change', () => {
+    audio.currentTime = seekBar.value;
+    seekBar._isDragging = false;
+  });
+
+  // 音量操作
   volumeBar.addEventListener('input', () => {
     audio.volume = volumeBar.value;
   });
-
-  // プレイヤーごとの状態を保存
-  player._animationFrameId = animationFrameId;
-  player._spinning = spinning;
 });
