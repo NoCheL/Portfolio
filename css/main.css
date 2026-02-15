@@ -1,0 +1,227 @@
+/* ベース設定：背景に微細なノイズ感を持たせる */
+.profile-section {
+    padding: 160px 0;
+    background: radial-gradient(circle at 20% 30%, #161a24 0%, #0d0f14 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ヘッダー：極限まで要素を削ぎ落としたスタイル */
+.profile-header {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.header-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, #00c6c6, transparent);
+}
+
+/* グリッドレイアウト */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 100px;
+    align-items: start;
+}
+
+/* 左側：アバターとミニマルコンタクト */
+.avatar-frame {
+    position: relative;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- プロフィール・画像修正版 --- */
+
+.profile-img {
+    width: 100%;
+    display: block;
+    /* フィルターを解除して本来の色を表示 */
+    filter: none; 
+    opacity: 1;
+    /* 動きを滑らかにする設定 */
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.avatar-frame:hover .profile-img {
+    /* ホバー時は色を変えず、わずかに拡大して「浮き上がる」演出に */
+    filter: none;
+    opacity: 1;
+    transform: scale(1.05); /* 1.05倍に拡大 */
+}
+
+@keyframes scan-loop {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* 装飾の四隅 */
+.corner-mark { position: absolute; width: 8px; height: 8px; border: 1px solid #00c6c6; }
+.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.contact-terminal {
+    margin-top: 40px;
+    padding-left: 10px;
+}
+
+.terminal-label {
+    display: block;
+    font-family: monospace;
+    font-size: 9px;
+    color: #00c6c6;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+}
+
+.email-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 0.8rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+.email-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px; left: 0; width: 0%; height: 1px;
+    background: #00c6c6;
+    transition: 0.3s;
+}
+
+.email-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 198, 198, 0.5);
+}
+
+.email-link:hover::after { width: 100%; }
+
+/* 右側：名前とプロフィールの設計 */
+.user-name {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.15em;
+    background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-role {
+    display: block;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #00c6c6;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.info-group {
+    margin-top: 60px;
+}
+
+.block-title {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    letter-spacing: 0.4em;
+    display: flex;
+    align-items: center;
+}
+
+.block-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-left: 20px;
+}
+
+.bio-text {
+    line-height: 2.2;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    max-width: 520px;
+}
+
+/* スキルタグ：よりシャープな印象に */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.01);
+    transition: 0.3s ease;
+}
+
+.tag:hover {
+    color: #fff;
+    border-color: #00c6c6;
+    background: rgba(0, 198, 198, 0.05);
+}
+
+/* リンクボタン：クリックしたくなる精密なデザイン */
+.link-terminal {
+    margin-top: 70px;
+    display: flex;
+    gap: 20px;
+}
+
+.terminal-btn {
+    padding: 14px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    position: relative;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    background: transparent;
+}
+
+.terminal-btn:hover {
+    color: #fff;
+    border-color: #00c6c6;
+    letter-spacing: 0.3em; /* ホバーで少し広がる */
+    box-shadow: 0 0 20px rgba(0, 198, 198, 0.15);
+    transform: translateY(-3px);
+}
+
+/* スマホ対応：レイアウト破綻を防ぐ */
+@media screen and (max-width: 850px) {
+    .profile-grid { grid-template-columns: 1fr; gap: 60px; }
+    .profile-left { max-width: 280px; margin: 0 auto; }
+    .user-name { font-size: 2.5rem; text-align: center; }
+    .user-role { text-align: center; }
+    .bio-text { text-align: justify; margin: 0 auto; }
+    .link-terminal { flex-direction: column; width: 100%; }
+    .terminal-btn { text-align: center; width: 100%; }
+}

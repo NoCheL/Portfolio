@@ -10,50 +10,89 @@
 </head>
 
 <body>
-<header>
-    <div class="nav-container">
-        <h1 class="logo">ポートフォリオ</h1>
-        <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="game.html">ゲーム</a></li>
-            <li><a href="#sites">サイト</a></li>
-            <li><a href="music.html">音楽</a></li>
-            <li><a href="music.html">その他</a></li>
-        </ul>
-        </nav>
-    </div>
+    <header>
+        <div class="nav-container" id="mainNav">
+            <div class="nav-inner">
+                <div class="logo-wrapper">
+                    <h1 class="logo">PORTFOLIO</h1>
+                </div>
+                
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="active-link">Home</a></li>
+                        <li><a href="game.html">Game</a></li>
+                        <li><a href="site.html">Site</a></li>
+                        <li><a href="music.html">Music</a></li>
+                        <li><a href="other.html">Other</a></li>
+                    </ul>
+                </nav>
+                <div class="menu-icon" id="menuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>        
+        <section class="hero">
+            <div class="plum-blossoms-container"></div>
+            <div class="hero-inner">
+                <div class="visual-container">
+                    <div class="hero-slides">
+                        <div class="slide active"><img src="image/main1.png" alt=""></div>
+                        <div class="slide"><img src="image/main2.png" alt=""></div>
+                        <div class="slide"><img src="image/game3.png" alt=""></div>
+                    </div>
+                    <div class="visual-overlay"></div>
+                </div>
 
-    <section class="hero">
-    <img src="image/main1.png" alt="メインビジュアル" class="hero-image">
-    </section>
+                <div class="hero-text">
+                    <span class="view-more">Selected Works</span>
+                    <h1 class="main-copy">GAME</h1>
+                </div>    
+            </div>
+        </section>
+    </header>    
 
 </header>
-    <main>
-        <div class="cp_card06">
-	<div class="details">
-		<span class="day">21</span>
-		<span class="month">06</span>
-		<span class="year">2018</span>
-	</div>
-	<div class="description">
-		<div class="content">
-			<span class="author">copypet</span>
-			<h1><a href="#">記事タイトル</a></h1>
-			<p class="text">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた...</p>
-			<label for="showmeta" class="meta_button"><span></span></label>
-		</div>
-		<input type="checkbox" id="showmeta" />
-		<ul class="meta">
-			<li><a href="#" class="fa fa-bookmark"></a></li>
-			<li><a href="#" class="fa fa-heart"><span>47</span></a></li>
-			<li><a href="#" class="fa fa-comment"><span>8</span></a></li>
-		</ul>
-	</div>
-</div>
+    <main class="game-container">
+        <div class="game-card" style="--theme-color: #00c6c6; --card-img: url('../image/main1.png');">
+            <div class="date-badge">
+                <span class="year">2025</span>
+                <span class="month">06</span>
+            </div>
 
-    </main>
-    <footer></footer>
+            <div class="description">
+                <div class="content">
+                    <span class="tech-stack">Unity / C#</span>
+                    <h1 class="game-title">ARCNUMBER</h1>
+                    <p class="text">なんか考え中～</p>
+                    
+                    <div class="button-group">
+                        <a href="game/ArcaNumber.html" target="_blank" class="main-link">View Details / Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-terminal">
+                <div class="footer-meta">
+                    <span class="footer-brand-mini">TANAKA MIZUKI</span>
+                    <span class="footer-sep">/</span>
+                    <span class="copyright">&copy;2026 TANAKA MIZUKI. All Rights Reserved.</span>
+                </div>
+                
+                <div class="footer-decoration">
+                    <div class="bar-unit"></div>
+                    <div class="bar-unit active"></div>
+                    <div class="bar-unit"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/js.js"></script>
 </body>
 
 </html>

@@ -4,83 +4,185 @@ body {
     margin: 0;
     padding: 0;
     color: #e0e6ed;
-    overflow-x: hidden; /* 横揺れ防止 */
+    overflow-x: hidden;
 }
 
-/* --- ナビゲーション (可変) --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* --- ナビゲーション共通 --- */
 .nav-container {
     width: 100%;
-    background-color: rgba(37, 48, 69, 0.95);
-    backdrop-filter: blur(10px); 
+    background-color: transparent;
+    backdrop-filter: blur(0px); 
     position: fixed;
-    top: 0; z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    top: 0; 
+    z-index: 1000;
+    transition: all 0.4s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-container.scrolled {
+    background-color: rgba(10, 12, 18, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0, 198, 198, 0.3);
 }
 
 .nav-inner {
-    max-width: 90%;
+    max-width: 1400px;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: clamp(1rem, 2vh, 2rem) 0;
+    padding: 1.5rem 0;
 }
 
 .logo {
     margin: 0;
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    letter-spacing: 2px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 198, 198, 0.5);
+}
+
+.logo-status {
+    font-size: 10px;
+    font-family: monospace;
     color: #00c6c6;
+    letter-spacing: 1px;
+    margin-top: -4px;
+    opacity: 0.8;
 }
 
-/* デスクトップ用ナビ */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    margin: 0; padding: 0;
+.logo-status::before {
+    content: "●";
+    margin-right: 5px;
+    animation: blink 1s infinite;
 }
 
-.nav-links li a {
-    text-decoration: none;
-    color: #c4cfd6;
-    font-size: clamp(0.85rem, 1vw, 1.1rem);
-    transition: 0.3s;
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- PC用ナビゲーション (901px以上) --- */
+@media screen and (min-width: 901px) {
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        margin: 0; padding: 0;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: #e0e6ed;
+        position: relative;
+        padding-bottom: 5px;
+        transition: color 0.3s;
+    }
+
+    .nav-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 0; height: 1px;
+        background: #00c6c6;
+        box-shadow: 0 0 8px #00c6c6;
+        transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+
+    .menu-icon {
+        display: none;
+    }
 }
 
-/* ハンバーガーアイコンのアニメーション準備 */
-.menu-icon {
-    display: none;
-    cursor: pointer;
-    z-index: 2000;
+/* --- スマホ用ナビゲーション (900px以下) --- */
+@media screen and (max-width: 900px) {
+    .menu-icon {
+        display: block;
+        position: relative;
+        width: 30px; height: 22px;
+        z-index: 2000;
+        cursor: pointer;
+    }
+
+    .menu-icon span {
+        display: block;
+        position: absolute;
+        width: 100%; height: 2px;
+        background-color: #00c6c6;
+        transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6), opacity 0.3s ease, background-color 0.4s ease;
+    }
+
+    .menu-icon span:nth-child(1) { top: 0; }
+    .menu-icon span:nth-child(2) { top: 10px; }
+    .menu-icon span:nth-child(3) { top: 20px; }
+
+    .menu-icon.active span:nth-child(1) { transform: translateY(10px) rotate(135deg); background-color: #fff; }
+    .menu-icon.active span:nth-child(2) { opacity: 0; transform: translateX(-15px); }
+    .menu-icon.active span:nth-child(3) { transform: translateY(-10px) rotate(-135deg); background-color: #fff; }
+
+    .nav-links {
+        display: none; /* JSでflexに切り替え */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100vh;
+        background: rgba(10, 12, 18, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1500;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        margin: 0; padding: 0;
+        list-style: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 順番にふわっと出す */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+
+    .nav-links li a {
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: 0.3em;
+    }
 }
 
-.menu-icon path {
-    transition: transform 0.4s ease, opacity 0.3s ease, stroke 0.4s ease;
-    transform-origin: center;
-}
-/* ✕印への変形 */
-.menu-icon.active .line-top { transform: translateY(8px) rotate(45deg); stroke: #fff; }
-.menu-icon.active .line-mid { opacity: 0; }
-.menu-icon.active .line-bot { transform: translateY(-8px) rotate(-45deg); stroke: #fff; }
-
-.nav-links li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #00c6c6;
-    transition: 0.3s;
-}
-
-.nav-links li a:hover { color: #fff; }
-.nav-links li a:hover::after { width: 100%; }
-
-/* --- ヒーローセクション (可変) --- */
+/* --- ヒーローセクション --- */
 .hero {
-    height: 100vh; /* PCは常に画面一杯 */
+    height: 100vh;
     background-color: #12151f; 
     display: flex;
     justify-content: center;
@@ -93,13 +195,12 @@ body {
 .hero-inner {
     position: relative;
     width: 100%;
-    height: clamp(500px, 100vh, 900px); /* 700px固定から柔軟な範囲に変更 */
+    height: clamp(500px, 100vh, 900px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 梅のコンテナ */
 .plum-blossoms-container {
     position: absolute;
     top: 0; left: 0;
@@ -109,7 +210,6 @@ body {
     overflow: hidden;
 }
 
-/* 画像コンテナ：比率でサイズを維持 */
 .visual-container {
     position: relative;
     width: clamp(300px, 80vw, 1200px); 
@@ -119,39 +219,24 @@ body {
     -webkit-mask-image: radial-gradient(circle, black 30%, transparent 80%);
 }
 
-.hero-slides, .slide {
-    width: 100%; height: 100%;
-}
-
-.slide {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
+.hero-slides, .slide { width: 100%; height: 100%; }
+.slide { position: absolute; opacity: 0; transition: opacity 2s ease-in-out; }
 .slide.active { opacity: 0.4; }
-
-.slide img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(40%) contrast(1.2);
-}
+.slide img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%) contrast(1.2); }
 
 .visual-overlay {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(rgba(18, 21, 33, 0) 50%, rgba(18, 21, 33, 0.2) 50%);
-    background-size: 100% 4px; /* 走査線の細かさはpxが最適 */
+    background-size: 100% 4px;
     pointer-events: none;
     z-index: 6;
 }
 
-/* --- テキスト：clampでフォントサイズを流動化 --- */
 .hero-text {
     position: absolute;
-    left: 8%; 
-    bottom: 10%; 
+    left: 8%; bottom: 10%; 
     z-index: 10;
     pointer-events: none;
 }
@@ -164,12 +249,10 @@ body {
     font-weight: 300;
     display: block;
     margin-bottom: clamp(5px, 1vh, 15px);
-    opacity: 0.8;
 }
 
 .main-copy {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(3rem, 10vw, 8rem); /* 最小3rem, 画面幅10%, 最大8rem */
+    font-size: clamp(3rem, 10vw, 8rem);
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.05em;
@@ -191,195 +274,82 @@ body {
 .plum-svg path { fill: none !important; stroke: #00c6c6; stroke-width: 1.2px; }
 .plum-svg circle { fill: #00c6c6 !important; stroke: none !important; }
 
-/* PC用メニューアイコン隠し */
-.menu-icon { display: none; cursor: pointer; z-index: 1100; }
-
-/* --- スマホ向け調整 (600px以下) --- */
-@media screen and (min-width: 601px) {
-    .nav-links {
-        display: flex !important; /* PCでは常に表示 */
-        opacity: 1 !important;
-        position: static;
-        background: none;
-        flex-direction: row;
-        gap: clamp(1.5rem, 4vw, 3.5rem);
-    }
-    .menu-icon {
-        display: none;
-    }
+/* スマホ用ヒーロー微調整 */
+@media screen and (max-width: 600px) {
+    .hero { height: 50vh; min-height: 400px; }
+    .hero-text { left: 5%; bottom: 5%; }
 }
 
-/* --- スマホ向け調整 (600px以下) 最新版 --- */
-@media screen and (max-width: 600px) {
-    .desktop-nav {
-        display: none; /* PC用ナビの枠を消す */
-    }
-
-    .nav-inner { 
-        padding: 1.2rem 5%; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }    
-
-    /* --- 滑らかなハンバーガーアイコン --- */
-    .menu-icon { 
-        display: block; 
-        position: relative;
-        width: 30px;
-        height: 22px;
-        z-index: 2000;
-        cursor: pointer;
-    }
-
-    .menu-icon span {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: #00c6c6;
-        /* cubic-bezierで高級感のある加速・減速を実現 */
-        transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6), 
-                    opacity 0.3s ease, 
-                    background-color 0.4s ease;
-    }
-
-    .menu-icon span:nth-child(1) { top: 0; }
-    .menu-icon span:nth-child(2) { top: 10px; }
-    .menu-icon span:nth-child(3) { top: 20px; }
-
-    /* ✕印アニメーション：少し多めに回す(135deg)ことで滑らかに見える */
-    .menu-icon.active span:nth-child(1) { 
-        transform: translateY(10px) rotate(135deg); 
-        background-color: #fff; 
-    }
-    .menu-icon.active span:nth-child(2) { 
-        opacity: 0; 
-        transform: translateX(-15px); /* 左にスライドしながら消える */
-    }
-    .menu-icon.active span:nth-child(3) { 
-        transform: translateY(-10px) rotate(-135deg); 
-        background-color: #fff; 
-    }
+/* --- フッター・超小型・高密度エディション --- */
+.site-footer {
     
-    /* --- スマホ用全画面メニュー本体のアップグレード --- */
-    .nav-links {
-        display: none; 
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100vh;
-        background: rgba(10, 12, 18, 0.95); /* 少し暗くして文字を際立たせる */
-        backdrop-filter: blur(20px); /* 背景をより深くぼかす */
-        -webkit-backdrop-filter: blur(20px);
-        
+    padding: 30px 0; /* 高さを大幅に圧縮 */
+    background: #0d0f14;
+    border-top: 1px solid rgba(255, 255, 255, 0.03); /* 非常に薄い境界線 */
+}
+
+.footer-terminal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 左側：テキスト情報 */
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: monospace;
+}
+
+.footer-brand-mini {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-sep {
+    color: #00c6c6;
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+.copyright {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.2);
+    margin: 0;
+}
+
+/* 右側：インジケーター装飾（サイバーなアクセント） */
+.footer-decoration {
+    display: flex;
+    gap: 6px;
+}
+
+.bar-unit {
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bar-unit.active {
+    background: #00c6c6;
+    box-shadow: 0 0 8px rgba(0, 198, 198, 0.6);
+}
+
+/* スマホ対応：横並びを維持しつつフォントサイズ調整 */
+@media screen and (max-width: 600px) {
+    .site-footer {
+        padding: 20px 0;
+    }
+    .footer-terminal {
         flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-decoration {
         justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        z-index: 1500;
-        
-        opacity: 0;
-        transition: opacity 0.5s ease; /* 背景のふわっと感 */
-        margin: 0; padding: 0;
-        list-style: none;
-    }
-
-    /* メニューが開いた時 */
-    .nav-links.active { 
-        display: flex; 
-        opacity: 1;
-    }
-
-    /* --- リストアイテムのアニメーション --- */
-    .nav-links li {
-        opacity: 0;
-        transform: translateY(30px); /* 最初は少し下に下げておく */
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), 
-                    opacity 0.6s ease;
-    }
-
-    /* メニューが開いた時、中のリストを順番に浮かび上がらせる */
-    .nav-links.active li {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* 順番に遅延をかけて「流れるような動き」にする */
-    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
-    .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
-    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
-    .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
-
-    .nav-links li a { 
-        font-size: 1.8rem; /* 少し大きく */
-        font-weight: 200;
-        color: #fff;
-        text-decoration: none;
-        letter-spacing: 0.3em;
-        transition: color 0.3s;
-    }
-
-    .nav-links li a:active {
-        color: #00c6c6; /* タップした瞬間の色 */
-    }
-
-    /* --- ヒーローエリア（高さと配置） --- */
-    .hero { 
-        height: 40vh; 
-        min-height: 300px; 
-        padding-top: 0; 
-    }
-
-    .hero-inner { 
-        height: 100%; 
-        width: 100%; /* 横幅いっぱい使い、テキストのleft:5%を活かす */
-    }
-
-    .visual-container {
-        width: 100%; 
-        height: 100%;
-        mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
-        -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
-    }
-
-    .visual-overlay {
-        background: radial-gradient(circle at center, transparent 10%, rgba(18, 21, 33, 0.7) 100%);
-        z-index: 6;
-    }
-
-    .slide img { 
-        opacity: 0.5;
-        transform: scale(1.1); 
-    }
-
-    /* --- テキスト：左下配置 --- */
-    .hero-text { 
-        position: absolute;
-        left: 5%; /* 0から5%に変更して少し余白を確保 */
-        bottom: 5%; 
-        text-align: left;
-        z-index: 10;
-        pointer-events: none;
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
-        width: 90%; 
-    }
-
-    .main-copy {
-        font-size: clamp(2.5rem, 15vw, 4.5rem); 
-        line-height: 0.8;
-        letter-spacing: -0.05em;
-        margin: 0;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
-    }
-
-    .view-more { 
-        font-size: 0.65rem; 
-        letter-spacing: 0.3em; 
-        margin-bottom: 0.3rem;
-        color: #00c6c6;
-        font-weight: 600;
-        display: block;
-        opacity: 1; 
     }
 }

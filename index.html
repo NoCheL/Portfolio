@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポートフォリオ</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
     <header>
-        <div class="nav-container">
+        <div class="nav-container" id="mainNav">
             <div class="nav-inner">
-                <h1 class="logo">PORTFOLIO</h1>
+                <div class="logo-wrapper">
+                    <h1 class="logo">PORTFOLIO</h1>
+                </div>
                 
-                <nav class="desktop-nav">
-                    </nav>
-
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="game.html">Game</a></li>
-                    <li><a href="#sites">Site</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="music.html">Other</a></li>
-                </ul>
-
-                <div class="menu-icon">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="active-link">Home</a></li>
+                        <li><a href="game.html">Game</a></li>
+                        <li><a href="site.html">Site</a></li>
+                        <li><a href="music.html">Music</a></li>
+                        <li><a href="other.html">Other</a></li>
+                    </ul>
+                </nav>
+                <div class="menu-icon" id="menuBtn">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -46,14 +45,84 @@
 
                 <div class="hero-text">
                     <span class="view-more">Selected Works</span>
-                    <h1 class="main-copy">PORTFOLIO</h1>
+                    <h1 class="main-copy">HOME</h1>
                 </div>    
             </div>
         </section>
     </header>    
 
-    <main></main>
-    <footer></footer>
-    <script src="js/main.js"></script>
+<main>
+    <section id="profile" class="profile-section">
+        <div class="container">
+            <div class="profile-header">
+                <h2 class="section-title">USER_PROFILE</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="profile-grid">
+                <div class="profile-left">
+                    <div class="visual-wrapper">
+                        <div class="avatar-frame">
+                            <img src="image/logo.jpg" alt="田中 瑞姫" class="profile-img">
+                            <div class="corner-mark top-left"></div>
+                            <div class="corner-mark bottom-right"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-terminal">
+                        <span class="terminal-label">CONTACT</span>
+                        <div class="terminal-content">
+                            <a href="mailto:your-email@example.com" class="email-link">your-email@example.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-right">
+                    <div class="name-block">
+                        <h3 class="user-name">田中 瑞姫</h3>
+                        <span class="user-sub">Digital Creator / Designer</span>
+                    </div>
+
+                    <div class="info-group">
+                        <h4 class="block-title">DESIGN_PHILOSOPHY</h4>
+                        <p class="bio-text">
+                            考え中～
+                        </p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4 class="block-title">～～～</h4>
+                        <div class="skill-tags">
+                            <span class="tag">HTML / CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="link-terminal">
+                        <a href="https://note.com/your_id" class="terminal-btn" target="_blank">READ_NOTE</a>
+                        <a href="#" class="terminal-btn" target="_blank">SNS_FEED</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-terminal">
+            <div class="footer-meta">
+                <span class="footer-brand-mini">TANAKA MIZUKI</span>
+                <span class="footer-sep">/</span>
+                    <span class="copyright">&copy;2026 TANAKA MIZUKI. All Rights Reserved.</span>
+            </div>
+            
+            <div class="footer-decoration">
+                <div class="bar-unit"></div>
+                <div class="bar-unit active"></div>
+                <div class="bar-unit"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/js.js"></script>
 </body>
 </html>

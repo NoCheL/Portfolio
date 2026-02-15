@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME | ARUCANUMBER</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="gameex.css">
+</head>
+<body class="one-screen-optimized">
+
+    <nav class="top-nav">
+        <a href="../game.html" class="exit-btn">
+            <span class="exit-line"></span>
+            <span class="exit-text">Game</span>
+        </a>
+    </nav>
+
+    <main class="main-dashboard">
+        <div class="col-visual">
+            <div class="viewer-main" id="viewerMain">
+                <video id="mainVideo" class="content-item active" autoplay muted loop playsinline>
+                    <source src="video/game_demo.mp4" type="video/mp4">
+                </video>
+                <img id="mainImage" class="content-item" src="" alt="">
+            </div>
+
+            <div class="gallery-row">
+                <div class="thumb-item active" data-type="video" data-src="video/game_demo.mp4">
+                    <div class="thumb-label">VIDEO</div>
+                    <video src="video/game_demo.mp4" muted></video>
+                </div>
+                <div class="thumb-item" data-type="image" data-src="image/game1_sub1.png">
+                    <img src="image/game1_sub1.png" alt="SS1">
+                </div>
+                <div class="thumb-item" data-type="image" data-src="image/game1_sub2.png">
+                    <img src="image/game1_sub2.png" alt="SS2">
+                </div>
+                <div class="thumb-item" data-type="image" data-src="image/game1_sub3.png">
+                    <img src="image/game1_sub3.png" alt="SS3">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-data">
+            <header class="p-header">
+                <h1 class="p-title">ARCNUMBER</h1>
+                <div class="p-tags"><span>Unity</span><span>C#</span></div>
+            </header>
+
+            <div class="data-scroll-area">
+                <section class="data-section">
+                    <h2 class="label">制作・担当範囲</h2>
+                    <ul class="res-list">
+                        <li>
+                            <span class="r-tag">プログラミング</span>
+                            <p>各アルカナスキル、戦闘システムなどを作りました。</p>
+                        </li>
+                        <li>
+                            <span class="r-tag">BGM</span>
+                            <p>タイトル、バトル、各キャラクターの曲を作りました。</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="data-section">
+                    <h2 class="label">作品紹介</h2>
+                    <p class="desc-text">最大４人でできるオンライン対戦ゲーム！自分だけのアルカナスキルと４つの魔法や武器を組み合わせて対戦に勝利しよう！</p>
+                </section>
+            </div>
+
+            <footer class="footer-action">
+                <div class="spec-row">
+                    <div class="spec-cell"><span class="k">PERIOD</span><span class="v">3 MONTHS</span></div>
+                </div>
+                <a href="assets/game_win.zip" class="dl-action-btn" download>
+                    <span class="btn-text">WINDOWS版をダウンロード</span>
+                    <span class="btn-icon">↓</span>
+                </a>
+            </footer>
+        </div>
+    </main>
+
+    <script src="gameex.js"></script>
+</body>
+</html>

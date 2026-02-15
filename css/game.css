@@ -1,176 +1,158 @@
-.cp_card06 {
-    width: 500px;
-    height: 200px;
-	position: relative;
-	overflow: hidden;
-	min-height: 390px;
-	border-radius: 3px;
-	background: url(images.jpg) 20% 1%/cover no-repeat;
-	background-color: #ffffff;
-	-webkit-box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-	        box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
+/* --- グリッドレイアウトの設定 --- */
+.game-container {
+    display: grid;
+    /* 音楽ページと同じ「1fr（均等幅）」を2回繰り返す設定 */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px; /* カード同士の間隔。好みに合わせて30px〜60pxで調整してください */
+    padding: 40px 20px;
+    max-width: 1200px; /* 全体の最大幅を少し広げました */
+    margin: 0 auto;
 }
-.cp_card06:hover .description {
-	-webkit-transform: translateY(0);
-	        transform: translateY(0);
+
+/* --- カード本体 --- */
+.game-card {
+    --theme-color: #00c6c6;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    background: #1a1d29;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    z-index: 1;
 }
-.cp_card06 input[type='checkbox'] {
-	display: none;
+
+/* --- 全面背景画像 --- */
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: var(--card-img);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
 }
-.cp_card06 input[type='checkbox']:checked + .meta {
-	-webkit-transform: translateY(-60px);
-	        transform: translateY(-60px);
+
+/* 画像に薄い影を落として文字を読みやすくする */
+.game-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+    pointer-events: none;
 }
-.cp_card06 .details {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 0.8em;
-	color: #ffffff;
-	border-radius: 0 0 3px 0;
-	background-color: #ff9800;
+
+.game-card:hover::before {
+    transform: scale(1.1); /* ホバーで画像がゆっくりズーム */
 }
-.cp_card06 .details span {
-	display: block;
-	text-align: center;
+
+/* --- 左上の年月バッジ --- */
+.date-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 12px 18px;
+    background: var(--theme-color);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 20px 0;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 10;
 }
-.cp_card06 .details .day {
-	font-size: 24px;
-	font-weight: 700;
-	text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.18);
+
+.date-badge .year { font-size: 14px; opacity: 0.9; }
+.date-badge .month { font-size: 22px; line-height: 1; }
+
+/* --- 説明エリア (すりガラス) --- */
+.description {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* 初期状態：タイトルのみ見える位置まで下げる */
+    transform: translateY(calc(100% - 105px)); 
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 5;
 }
-.cp_card06 .details .month {
-	text-transform: uppercase;
+
+.game-card:hover .description {
+    transform: translateY(0);
 }
-.cp_card06 .details .month,
-.cp_card06 .details .year {
-	font-size: 12px;
+
+.description .content {
+    padding: 30px 25px;
+    background: linear-gradient(
+        to top, 
+        rgba(10, 12, 18, 0.98) 0%, 
+        rgba(10, 12, 18, 0.9) 80%, 
+        transparent 100%
+    );
+    backdrop-filter: blur(12px);
+    color: #fff;
+    min-height: 150px; /* せり上がった時にボタンまで入るよう少し高さを確保 */
 }
-.cp_card06 .description {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	-webkit-transition: -webkit-transform 0.3s;
-	        transition: -webkit-transform 0.3s;
-	        transition:         transform 0.3s;
-	        transition:         transform 0.3s, -webkit-transform 0.3s;
-	-webkit-transform: translateY(80px);
-	        transform: translateY(80px);
+
+.tech-stack {
+    font-size: 11px;
+    color: var(--theme-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
-.cp_card06 .description .content {
-	position: relative;
-	z-index: 1;
-	padding: 1em;
-	background-color: #ff9800;
-	-webkit-box-shadow: 2px -4px 6px 1px rgba(50, 50, 50, 0.14);
-	        box-shadow: 2px -4px 6px 1px rgba(50, 50, 50, 0.14);
+
+.game-title {
+    font-size: 1.8rem;
+    margin: 8px 0 25px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
-.cp_card06 .description .author {
-	font-size: 12px;
+
+.text {
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-.cp_card06 .description h1 {
-	font-size: 1.4em;
-	margin-top: 10px;
+
+/* --- ボタンデザイン --- */
+.button-group {
+    margin-top: 15px;
 }
-.cp_card06 .description h1 a {
-	color: #ffffff;
+
+.main-link {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--theme-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-.cp_card06 .description .text {
-	height: 3em;
-	margin: 0 0 1em 0;
+
+.main-link:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px var(--theme-color);
 }
-.cp_card06 .meta {
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	-webkit-transition: -webkit-transform 0.3s;
-	        transition: -webkit-transform 0.3s;
-	        transition:         transform 0.3s;
-	        transition:         transform 0.3s, -webkit-transform 0.3s;
-	-webkit-transform: translateY(0);
-	        transform: translateY(0);
-	text-align: center;
-}
-.cp_card06 .meta::before,
-.cp_card06 .meta::after {
-	display: table;
-	content: '';
-}
-.cp_card06 .meta::after {
-	clear: both;
-}
-.cp_card06 .meta li {
-	position: relative;
-	display: inline-block;
-	float: left;
-	width: 33.333333%;
-	height: 60px;
-	background-color: #8BC34A;
-}
-.cp_card06 .meta a {
-	font-size: 24px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	        transform: translate(-50%, -50%);
-	text-decoration: none;
-	color: #ffffff;
-}
-.cp_card06 .meta span {
-	font-size: 10px;
-	position: absolute;
-	top: -10px;
-	left: 50%;
-	-webkit-transform: translate(-50%, 0);
-	        transform: translate(-50%, 0);
-}
-.cp_card06 .meta_button {
-	position: absolute;
-	z-index: 999;
-	top: 16px;
-	right: 16px;
-	width: 25px;
-	cursor: pointer;
-	text-align: center;
-}
-.cp_card06 .meta_button span {
-	position: relative;
-	display: inline-block;
-	width: 5px;
-	height: 5px;
-	color: #ffffff;
-	border-radius: 50%;
-	background-color: #ffffff;
-}
-.cp_card06 .meta_button span::after,
-.cp_card06 .meta_button span::before {
-	position: absolute;
-	display: block;
-	width: 5px;
-	height: 5px;
-	content: '';
-	border-radius: 50%;
-	background-color: currentColor;
-}
-.cp_card06 .meta_button span::before {
-	left: -10px;
-}
-.cp_card06 .meta_button span::after {
-	right: -10px;
-}
-@media screen and (max-width: 480px) {
-	.cp_card06 .data {
-		-webkit-transform: translateY(7em);
-		        transform: translateY(7em);
-	}
-	.cp_card06 .description .text {
-		height: 5em;
-		margin: 0 0 1em 0;
-	}
+
+/* --- レスポンシブ（スマホ対応） --- */
+@media screen and (max-width: 900px) {
+    .game-container { 
+        grid-template-columns: 1fr; /* 画面が狭いときは1列にする */
+        gap: 30px; 
+    }
+    .game-card { height: 350px; }
+    /* スマホではタイトルが隠れすぎないよう少し調整 */
+    .description { transform: translateY(calc(100% - 95px)); }
 }
