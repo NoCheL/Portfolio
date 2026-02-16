@@ -1,0 +1,616 @@
+/* CSS Document */
+@font-face {
+	font-family: 'MyFont';
+	src: url(font/Nosutaru-dotMPlusH-10-Regular.ttf) format(“truetype”);
+}
+
+html{
+	font-family: 'MyFont';
+	color: #fff;
+	background-image: url(images/BackGround.png);
+	scroll-behavior: smooth;
+	max-width: 100%;
+}
+
+#titleimage{
+	width: 100%;
+	margin: 0;
+	padding: 0 ;
+	vertical-align: top;
+}
+/*ナビゲーション*/
+nav{
+	text-align: center;
+}
+	
+.main-menu {
+	list-style-type: none;
+	margin: 0 ;
+	padding: 0 ;
+	background-color: #990c9e;
+	
+}
+	
+.main-menu li {
+	display: inline-block;
+	width: 250px;
+	margin: 0 ;
+	padding: 20px ;
+}
+	
+.main-menu li a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 25px;
+	padding: 10px 50px;
+}
+	
+nav ul li:hover{
+	background-color: rgb(255, 14, 58);
+}
+#animation {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: background-image 0.5s ease-in-out; /* 背景画像のスムーズな切り替え */
+}
+
+.downpos{
+	display: flex;
+	width: 300px;
+	height: 200px;
+	position: fixed;
+	bottom: 0%;
+	right: 0%;
+}
+.sizebox{
+	display: block;
+	position: fixed;
+	width:200px; 
+	height:150px;
+	bottom: 0%;
+	right: 0%;
+}
+.mypictop{
+	display: block;
+	width:150px; 
+	height:150px;
+	position: fixed;
+	right: 0%;
+	opacity: 0; /* デフォルトでは表示を消します */
+  
+}
+
+#mypic{
+	position: absolute;
+}
+/* トップへ戻るボタン */
+.pagetop {
+	display: block;
+	width: 64px;
+	height: 64px;
+	position: fixed;
+	bottom: 2%;
+	transition: opacity .3s ease, visibility .3s ease;
+	border-radius: 50%;
+	opacity: 0; /* デフォルトでは表示を消します */
+  }
+  .pagetop:hover {
+    box-shadow: 0 0 10px #fff;
+}
+  #pagetext{
+	background-color: #ffffff;
+	border-radius: 50%;
+	color: #333;
+	padding: 4px 10px;
+	position: fixed;
+	bottom: 13%;
+  }
+  .pagetop__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-image: url(images/mahoujin5.png);
+	background-position:center center;
+	background-size:contain;
+	text-align: center;
+	font-size: 18px;
+	font-size: bold;
+	line-height: 1.3;
+	color: #333;
+	text-decoration: none;
+  }
+  
+  .pagetop__text {
+	width: 100%;
+	height: 100%;
+	padding-top: 15px;
+	position: relative;
+  }
+  
+  .pagetop__text::before {
+	display: inline-block;
+	position: absolute;
+	top: -13px;
+	left: 50%;
+	transform: translateX(-50%) rotate(90deg);
+  }
+  
+  .pagetop__text::after {
+	display: inline-block;
+	position: absolute;
+	top: -7px;
+	left: 50%;
+	transform: translateX(-50%) rotate(90deg);
+  }           
+body {
+
+	/* 画像を常に天地左右の中央に配置 */
+	background-position: center top 68px;
+
+	/* 画像をタイル状に繰り返し表示しない */
+
+	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+	background-attachment: fixed;
+
+	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+	background-size: cover;
+
+	/* 背景画像が読み込まれる前に表示される背景のカラー */
+	
+	margin: 0%;
+	padding: 0%;
+
+}
+h2{
+	font-size: 2.2em;
+}
+#domi{
+	opacity: 0;
+	position: absolute;
+	width: 0;
+}
+.main-content{
+	justify-content: space-between;	
+	margin: 30px;
+}
+#title{
+	font-weight: bold;
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+.mainback{
+	margin: 10px;
+}
+#main-content-all{
+	width: 74%;
+	
+}
+#slider1{
+	margin-bottom: 50px;
+}
+/*.content{
+}*/
+.content-title{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 16px;
+}
+.content-introduction{
+	font-size: 20px;
+	display:block;
+	
+	margin-bottom: 10px;
+}
+
+.side{
+	position: sticky;
+}
+#side{
+  	width: 22%;
+	text-align:right;
+	
+}
+#sale{
+	font-weight: bold;
+	font-size: 11px;
+	box-sizing    : border-box;           /* 罫線も含む長さ       */
+	display: inline-block;
+	
+	padding       : 10px;                 /* 文字の位置合わせ     */
+	padding-left: 12px;
+	text-align    : center;               /* 文字位置             */
+	color         : #ffffff;              /* 文字色               */
+	border-radius : 1px;                  /* 角丸の指定           */
+	
+
+	background    : #AFAFAF ;              /* BOXの背景色          */
+	
+	margin-bottom: 10px;
+}
+#before-discount{
+	font-size: 13px;
+	text-decoration: line-through;
+}
+#amount{
+	font-weight: bold;
+	font-size: 32px;	
+}
+#tax{
+	font-size: 11px;
+	opacity: 0.8;
+	margin-bottom: 16px;
+}
+
+.dl-item{
+	text-decoration: none;
+	
+}
+.dl-item:hover{
+	opacity: 0.6;
+}
+
+.dl-button{
+	font-weight: 800;
+	margin        : auto;                 /* サンプル用 中央寄せ  */
+	box-sizing    : border-box;           /* 罫線も含む長さ       */
+	width         : 100%;                 /* BOXの幅              */
+	max-width     : 600px;                /* BOXの最大幅          */
+	padding       : 12px 20px;                 /* 文字の位置合わせ     */
+	text-align    : center;               /* 文字位置             */
+	color         : #ffffff;              /* 文字色               */
+	border-radius : 14px;                  /* 角丸の指定           */
+	/* 購入ボタンはここ */
+	background    : #e60012 ;              /* BOXの背景色          */
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+.productDetail{
+	width: 100%;
+    margin-top: 36px;
+    text-align: left;
+	padding-top: 0px;
+    border-top: solid 2px;
+}
+.productDetail td {
+    font-size: 15px;
+}
+.productDetail th, .productDetail td{
+	position: relative;
+    padding: 13px 0 11px;
+    border-bottom: solid 2px #f0f0f0;
+    text-align: left;
+    vertical-align: middle;
+}
+.productDetail th{
+	width: 140px;
+}
+.hp-link{
+	
+	text-decoration: none;
+	font-weight: bold;
+	margin        : auto;                 /* サンプル用 中央寄せ  */
+	box-sizing    : border-box;           /* 罫線も含む長さ       */
+	width         : 100%;                 /* BOXの幅              */
+	max-width     : 600px;                /* BOXの最大幅          */
+	padding       : 12px;                 /* 文字の位置合わせ     */
+	text-align    : center;               /* 文字位置             */
+	color         : #ffffff;              /* 文字色               */
+	border-radius : 2px;                  /* 角丸の指定           */
+	background    : #9FFB9A ;              /* BOXの背景色          */
+	}
+.hp-link:hover{
+	opacity: 0.6;
+}
+.copylight{
+	margin-top: 10px;
+}
+.sp-video{
+    width: 100%;
+    position: absolute;
+    margin: auto;
+} 
+
+.box{
+	margin-bottom: 10px;
+}
+
+.gakuseki-box 
+{
+	text-align: left;
+	margin-bottom: 10px;
+}
+.comment-box{
+	margin-bottom: 10px;
+}
+.comment-box label{
+	text-align: left;
+	display: flex;
+	margin-bottom: -20px;
+}
+.radio-box{
+	margin-bottom: 10px;
+}
+.radio-box label{
+	display:block;
+	text-align: left;
+	margin-bottom: 2px;
+}
+.radio{
+	text-align:right;
+	
+}
+
+input[type="email"]{
+	padding: 10px;
+	width: 65%;
+	color:rgb(27, 27, 27);
+	border:1px solid #999;
+}
+textarea{
+	padding: 10px;
+	height: 130px;
+	color:rgb(27, 27, 27);
+	font-size: 15px;
+	width: 95%;
+	border:1px solid #999;
+}
+
+.end-message{
+	display: none;
+}
+  
+.false-message{
+	display: none;
+}
+
+/*ここからgameroleだけのcss*/
+.rolelist li{
+	margin-bottom: 10px;
+	margin-left: 20px;
+	font-size: 2em;
+	list-style: none;
+}
+ul.rolelist li a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+	padding-left: 3%;
+}
+ul.rolelist li a:hover {
+	color: #0f0720;
+}
+
+#spade{
+	background-image: url(images/suit_spade.png);
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position-x:0% ;
+}
+#hart{
+	background-image: url(images/suit_hart.png);
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position-x:0% ;
+}
+#club{
+	background-image: url(images/suit_club.png);
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position-x:0% ;
+}
+#dia{
+	background-image: url(images/suit_dia.png);
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position-x:0% ;
+}
+.righttext{
+	display: flex;
+	max-width: 100%;
+	height: auto;
+	margin: 100px;
+}
+.divspace1_blue{
+	block-size: 60%;
+	width: 80%;
+	padding-top: 2%;
+	padding-left: 7%;
+	font-size: 2em;
+	background-image: url(images/textback_blue.png);
+	background-size:90% 100%;
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+.divspace1_red{
+	block-size: 70%;
+	width: 80%;
+	padding-top: 2%;
+	padding-left: 7%;
+	font-size: 2em;
+	background-image: url(images/textback_red.png);
+	background-size:90% 100%;
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+.divspace1_green{
+	block-size: 70%;
+	width: 80%;
+	padding-top: 2%;
+	padding-left: 7%;
+	font-size: 2em;
+	background-image: url(images/textback_green.png);
+	background-size:90% 100%;
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+.divspace1_yellow{
+	block-size: 70%;
+	width: 80%;
+	padding-top: 2%;
+	padding-left: 7%;
+	font-size: 2em;
+	background-image: url(images/textback_yellow.png);
+	background-size:90% 100%;
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+.divspace2{
+	block-size: 20%;
+	width: 20%;
+	text-align: center;
+}
+
+/* styles.css */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+button {
+    background-color: #000;
+    color: white;
+	font-size: 2em;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #dc3f54;
+}
+
+.gameimg {
+    display: flex;
+    justify-content: center;
+}
+
+.gameimg img {
+    width: 75%;
+    border: 3px solid #fff;
+}
+
+
+/* movie.css */
+.mainvideo{
+	width:70%;
+	height:70%;
+  	margin: 25px 0 0 15%; /* 完全に中央に配置するため、上・左の margin を負の数に設定 */
+	padding-bottom: 70px;
+}
+
+/* download.css */
+@keyframes spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.card-button {
+    width: 140px;  /* 幅を広げる */
+    height: 210px; /* 高さを広げる */
+    perspective: 1000px;
+    background-color: transparent;
+    border: none;
+    animation: spin 4s linear infinite;
+    transform-style: preserve-3d;
+    position: absolute; /* 絶対配置 */
+    display: flex; /* 子要素の高さを継承 */
+    align-items: center; /* 子要素を中央揃え */
+    justify-content: center; /* 子要素を中央揃え */
+	box-shadow:
+    -5px 5px 10px rgba(255, 255, 255, 0.9),
+    5px -5px 10px rgba(255, 255, 255, 0.9)
+}
+.no-box-shadow {
+    box-shadow: none !important;
+}
+
+.card-button-front, .card-button-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    background-size: contain; /* 画像のサイズを調整 */
+    background-position: center;
+    background-repeat: no-repeat;
+	
+	transition: opacity 0.5s ease-in-out, background-image 0.5s ease-in-out; 
+}
+
+.card-button-back {
+    transform: rotateY(180deg);
+}
+
+.downloaddiv {
+    display: flex;
+    justify-content: space-between; /* 子要素を等間隔で配置 */
+    width: 100%; /* 親要素の幅を指定 */
+}
+
+.downloaddiv > div {
+    display: flex;
+    align-items: center; /* 垂直方向に中央寄せ */
+    justify-content: center; /* 水平方向に中央寄せ */
+    flex: 1; /* 各 div の幅を均等にする */
+    position: relative; /* 子要素の位置を相対的に */
+    height: 600px; /* divの高さを大きくする */
+}
+.dl-item {
+    margin: 20px;
+	padding: 5% 15%;
+    font-size: 16px;
+    background-image: url(images/Frame.png);
+	background-size: contain; /* 画像のサイズを調整 */
+    background-position: center;
+    background-repeat: no-repeat;
+	background-size: 100%;
+	border-radius: 10%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.card-button:hover {
+    cursor: pointer; /* カーソルをポインタに変更 */
+	box-shadow:
+    -5px 5px 10px rgba(205, 229, 119, 0.9),
+    5px -5px 10px rgba(205, 229, 119, 0.9)
+
+}
+
+#button1 {
+    top: 10px;  /* 右上に配置 */
+    right: 30px;
+}
+
+#button2 {
+    bottom: 30px;  /* 左下に配置 */
+    left: 100px;
+}
+
+#button3 {
+	bottom: 30px;  /* 左下に配置 */
+    right: 100x;
+}
+
+#button4 {
+	top: 10px;  /* 右上に配置 */
+    left: 30px;
+}

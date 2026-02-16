@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+
+        <!-- ページタイトル -->
+        <title>ARCANUMBER|ダウンロード</title>
+
+        <!-- ページアイコン -->
+        <link rel = "icon" type="image/png" href="images/mahoujin5.png">
+
+
+        <script>var __adobewebfontsappname__="dreamweaver"</script>
+        <script src="http://use.edgefonts.net/source-sans-pro:n2,n4,n6:default.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="game.css" rel="stylesheet" type="text/css">
+        <script src="ja.js"></script>
+    </head>
+    <body>
+        <header>		
+            <img id="titleimage" src="images/headerimg.jpg">
+            <nav>
+		<ul class="main-menu">
+        <li><a href="#" class="menu-link" onclick="navigateTo('game.html')">ホーム</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('gamerole.html')">ゲーム説明</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('movie.html')">紹介動画</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('download.html')">ダウンロード</a></li>
+		<li><a href="#" class="menu-link" onclick="navigateTo('../site.html')">戻る</a></li>
+		</ul>
+		</nav>
+		<div id="animation" class="animation-frame" style="display: none;">
+		</div>
+        </header>
+        <main>
+            <h2>ダウンロード</h2>
+            
+            <div class="downloaddiv">
+        <div>
+            <button class="card-button" id="button1"></button>
+            <button class="card-button" id="button2"></button>
+        </div>
+        <div class="dawngamediv">
+            <a href="game.zip"  download=""  class="dl-item"><button>download</button></a>
+        </div>
+        <div>
+            <button class="card-button" id="button3"></button>
+            <button class="card-button" id="button4"></button>
+        </div>
+    </div>    
+    <div class="sizebox">
+    <div class="pagetop">
+                <a id="pagetext">TOPへ</a>
+                <a class="pagetop__link" onclick="stopSlideshow()">
+                <span class="pagetop__text"></span>
+                </a>
+            </div>	
+            <div class="mypictop">
+                <img id="mypic" src="images/YellowStart1.png" >
+                <script>
+                    var pics_src = new Array("images/YellowStart1.png","images/YellowStart2.png","images/YellowStart1.png","images/YellowStart2.png","images/YellowStart3.png");
+                    var magicpics_src = new Array("images/YellowMagic1.png","images/YellowMagic2.png","images/YellowMagic3.png");
+                    var num = -1;
+                    var magicnum=-1;
+                    var timer;
+                    var magictimer;
+                    var isSlideshowActive = true; // フラグ変数
+
+                    function slideshow_timer() {
+                        if (isSlideshowActive) {
+                        clearTimeout(magictimer);
+                        num = (num + 1) % pics_src.length;
+                        document.getElementById("mypic").src = pics_src[num];
+                        if(num  != 4){
+                            timer = setTimeout(slideshow_timer, 500);
+                        }
+                        else{
+                            timer=setTimeout(slideshow_timer, 1000);
+                        }
+                        }
+                    }
+
+                    function stopSlideshow() {
+                        isSlideshowActive = false; // フラグをfalseにして停止
+                        clearTimeout(timer);
+                        if(magicnum<2&&!isSlideshowActive){
+                        magicnum = (magicnum + 1);
+                        document.getElementById("mypic").src = magicpics_src[magicnum];
+                        magictimer=setTimeout(stopSlideshow, 200);
+                        }
+                        else{
+                            window.scroll({ top: 0, behavior: "smooth" });
+                            magicnum=-1;
+                            num=-1;
+                            isSlideshowActive = true; // フラグをfalseにして停止
+                            slideshow_timer();
+                        }
+                    }
+
+                    slideshow_timer();
+                </script> 
+            </div>	
+    </div>
+        </main>
+    </body>
+</html>

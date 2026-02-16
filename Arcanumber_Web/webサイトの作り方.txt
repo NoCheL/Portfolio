@@ -1,0 +1,14 @@
+Webの作り方
+
+フォルダ[images]に動画とスクリーンショットを入れます。
+それぞれ、Jpeg画像にしてください。PNG画像だとうまく表示されません。
+　動画：movie.mp4
+　スクリーンショット：screenshot01.jpg、screenshot02.jpg、screenshot03.jpg
+　ホームページのリンク：slide.jpg、thumbnail.jpg
+
+game.html
+ <!-- 変更必要箇所 -->を変更してください。
+ HTMLタグは触らないように気を付けてください。
+ 
+game.zip
+　実行ファイルをフォルダごとZIPファイルにしてください。

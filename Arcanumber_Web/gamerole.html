@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+
+        <!-- ページタイトル -->
+        <title>ARCANUMBER|ゲーム説明</title>
+
+        <!-- ページアイコン -->
+        <link rel = "icon" type="image/png" href="images/mahoujin5.png">
+
+
+        <script>var __adobewebfontsappname__="dreamweaver"</script>
+        <script src="http://use.edgefonts.net/source-sans-pro:n2,n4,n6:default.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="game.css" rel="stylesheet" type="text/css">
+        <script src="ja.js"></script>
+    </head>
+    <body>
+        <header>		
+            <img id="titleimage" src="images/headerimg.jpg">
+            <nav>
+        <ul class="main-menu">
+        <li><a href="#" class="menu-link" onclick="navigateTo('game.html')">ホーム</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('gamerole.html')">ゲーム説明</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('movie.html')">紹介動画</a></li>
+        <li><a href="#" class="menu-link" onclick="navigateTo('download.html')">ダウンロード</a></li>
+		<li><a href="#" class="menu-link" onclick="navigateTo('../site.html')">戻る</a></li>
+		</ul>
+		</nav>
+		<div id="animation" class="animation-frame" style="display: none;">
+		</div>
+        </header>
+        <main>
+            <h2>ゲーム説明</h2>
+            <div class="pad">
+                <div class="rolenav">
+                    <ul class="rolelist">
+                        <li><a href="#game-about" id="spade">ゲームについて</a></li>
+                        <li><a href="#arcana-skills" id="hart">アルカナスキルについて</a></li>
+                        <li><a href="#skills" id="club">スキルについて</a></li>
+                        <li><a href="#battle" id="dia">バトルについて</a></li>
+                    </ul>
+                </div>
+                <h2 id="game-about">ゲームについて</h2>
+                <div class="gameimg">
+                <img src="images/Room.png">
+                </div>
+                <div class="righttext">
+                    <div class="divspace1_blue">
+                        <a>ARCANUMBERは最大４人で遊べるオンラインアクション<br></a>
+                        <a>対戦ゲームだ。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/blueicon1.png">
+                    </div>        
+                </div>
+            </div>
+            <div class="righttext">
+                    <div class="divspace2">
+                        <img src="images/blueicon2.png" style="transform: scaleX(-1);">
+                    </div>        
+                    <div class="divspace1_blue">
+                        <a>ランダムに5つから選べるアルカナスキルと<br></a>
+                        <a>自由に選べる4つのスキルを組み合わせて、相手と戦うんだ。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                </div>
+            </div>
+            <h2 id="arcana-skills">アルカナスキルについて</h2>
+            <div class="gameimg">
+                <img src="images/Arucana.png">
+                </div>
+                <div class="righttext">
+                    <div class="divspace1_red">
+                        <a>アルカナスキルはランダムで選ばれた５枚の中から好きなのを<br></a>
+                        <a>選んで使えるスキルだよ！<br></a>
+                        <a>自分がこの後選ぶスキルに合うものや、単純に強いなで選ぶの<br></a>
+                        <a>もよし、好きなように選んでね～<br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/redicon1.png">
+                    </div>        
+                </div>
+            </div>
+            <div class="container"> 
+                <div class="gameimg">
+                    <button id="prev"><</button> 
+                    <img id="slider" class="roleimg" src="images/redrole21.png" alt="Image Slider"> 
+                    <button id="next">></button>
+
+                </div> 
+            </div>            
+                    <div class="righttext">
+                    <div class="divspace2">
+                        <img src="images/redicon2.png" style="transform: scaleX(-1);">
+                    </div>        
+                    <div class="divspace1_red">
+                        <a>アルカナスキルは全部で４２種類あるよ～<br></a>
+                        <a>ただし、アルカナスキルは常時発動するもの、スキルみたいに<br></a>
+                        <a>ボタンを押して発動するもの、特定の条件で発動するものが<br></a>
+                        <a>あるから気を付けてね～<br></a>
+                        <a><br></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gameimg">
+                <img src="images/role2.png">
+                </div>
+            <div class="righttext">
+                    <div class="divspace1_red">
+                        <a>常時発動するものや、条件下で発動するものはパッシブ<br></a>
+                        <a>スキルみたいにボタンを押して発動するものはアクティブ<br></a>
+                        <a>みたいに右上に書いてあるからよく見てね～<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/redicon1.png">
+                    </div>        
+                </div>
+
+            <h2 id="skills">スキルについて</h2>
+            <div class="gameimg">
+                <img src="images/Skill.png">
+                </div>
+                <div class="righttext">
+                    <div class="divspace1_green">
+                        <a>このなかから４つ選びます。このスキルはほかのプレイヤー<br></a>
+                        <a>とかぶる可能性があります。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/greenicon1.png">
+                    </div>        
+                </div>
+            </div>
+            <div class="righttext">
+                    <div class="divspace2">
+                        <img src="images/greenicon2.png" style="transform: scaleX(-1);">
+                    </div>        
+                    <div class="divspace1_green">
+                        <a>炎を出したり、相手の動きを遅くする魔法を使ったり、<br></a>
+                        <a>アルカナに合わせて選ぶもよし、好きなスキルを<br></a>
+                        <a>組み合わせてもよしです。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gameimg">
+                <img src="images/green3.png">
+                </div>
+            <div class="righttext">
+                    <div class="divspace1_green">
+                        <a>どれか悩んだときは、プリセットというものがありますので、<br></a>
+                        <a>アルカナスキルと組み合わせたいスキルがないというときなど<br></a>
+                        <a>に便利ですよ。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/greenicon1.png">
+                    </div>        
+                </div>
+            </div>
+
+            <h2 id="battle">バトルについて</h2>
+            <div class="righttext">
+                    <div class="divspace1_yellow">
+                        <a>それではバトルについて説明していきましょう。<br></a>
+                        <a>相手も自分も毎回ランダムなアルカナが配られています。<br></a>
+                        <a>相手がどのような戦法をとってくるか推測しながら戦えば、<br></a>
+                        <a>勝利に近づくこともできるでしょう。<br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/yellowicon1.png">
+                    </div>        
+                </div>
+            </div>
+            <div class="gameimg">
+                <img src="images/yellow1.png">
+                </div>
+
+            <div class="righttext">
+                    <div class="divspace2">
+                        <img src="images/yellowicon2.png" style="transform: scaleX(-1);">
+                    </div>        
+                    <div class="divspace1_yellow">
+                        <a>右上にはスキルのリストがあります。セットされているもの<br></a>
+                        <a>には外枠に色がついております。<br></a>
+                        <a>スキルを撃つとクールタイムが入ります。クールタイム中は<br></a>
+                        <a>スキルは打てないので注意です。<br></a>
+                        <a><br></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gameimg">
+                <img src="images/yellow3.png">
+                </div>
+  
+            <div class="righttext">
+                <div class="divspace1_yellow">
+                        <a>またステータスアップや、ステータスダウンなどの効果はHP<br></a>
+                        <a>の上に書いてありますので効果が続いているタイミングが<br></a>
+                        <a>わかります。<br></a>
+                        <a><br></a>
+                        <a><br></a>
+                    </div>
+                    <div class="divspace2">
+                        <img src="images/yellowicon1.png">
+                    </div>        
+                </div>
+            </div>
+            <div class="gameimg">
+                <img src="images/yellow4.png">
+                </div>
+
+            <div class="righttext">
+                    <div class="divspace2">
+                        <img src="images/yellowicon2.png" style="transform: scaleX(-1);">
+                    </div>        
+                    <div class="divspace1_yellow">
+                        <a>戦いでは相手のHPを0にして勝利です。また最終的にHPが<br></a>
+                        <a>一番多い者が勝利を掴みます。<br></a>
+                        <a>ただ力だけを求めるのではなく、時には守りに徹するのも<br></a>
+                        <a>大事かもしれません。<br></a>
+                        <a><br></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sizebox">
+            <div class="pagetop">
+                <a id="pagetext">TOPへ</a>
+                <a class="pagetop__link" onclick="stopSlideshow()">
+                <span class="pagetop__text"></span>
+                </a>
+            </div>	
+            <div class="mypictop">
+                <img id="mypic" src="images/RedStart1.png" >
+                <script>
+                    var pics_src = new Array("images/RedStart1.png","images/RedStart2.png","images/RedStart1.png","images/RedStart2.png","images/RedStart3.png");
+                    var magicpics_src = new Array("images/RedMagic1.png","images/RedMagic2.png","images/RedMagic3.png");
+                    var num = -1;
+                    var magicnum=-1;
+                    var timer;
+                    var magictimer;
+                    var isSlideshowActive = true; // フラグ変数
+
+                    function slideshow_timer() {
+                        if (isSlideshowActive) {
+                        clearTimeout(magictimer);
+                        num = (num + 1) % pics_src.length;
+                        document.getElementById("mypic").src = pics_src[num];
+                        if(num  != 4){
+                            timer = setTimeout(slideshow_timer, 500);
+                        }
+                        else{
+                            timer=setTimeout(slideshow_timer, 1000);
+                        }
+                        }
+                    }
+
+                    function stopSlideshow() {
+                        isSlideshowActive = false; // フラグをfalseにして停止
+                        clearTimeout(timer);
+                        if(magicnum<2&&!isSlideshowActive){
+                        magicnum = (magicnum + 1);
+                        document.getElementById("mypic").src = magicpics_src[magicnum];
+                        magictimer=setTimeout(stopSlideshow, 200);
+                        }
+                        else{
+                            window.scroll({ top: 0, behavior: "smooth" });
+                            magicnum=-1;
+                            num=-1;
+                            isSlideshowActive = true; // フラグをfalseにして停止
+                            slideshow_timer();
+                        }
+                    }
+
+                    slideshow_timer();
+                </script> 
+            </div>	
+        </div>
+        </main>
+    </body>
+</html>
