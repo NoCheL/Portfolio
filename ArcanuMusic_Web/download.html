@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>ARCANUMBER</title>
+
+    <!-- フォントやアイコンの設定 -->
+    <link rel="icon" type="image/png" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- スタイルシートとJavaScript -->
+    <link href="game.css" rel="stylesheet" type="text/css">
+    <link href="download.css" rel="stylesheet" type="text/css">
+    <script src="Custom/page-flip.browser.js"></script>
+    <script src="ja.js"></script>
+</head>
+
+<body class="lightning-page">
+
+    <div class="magic-button-container">
+
+        <!-- ダウンロードボタン -->
+        <a href="ArcanuMusic.zip"  download=""  class="dl-item"><button id="magic-download-button">ダウンロード</button></a>
+    </div>
+      
+      <div class="particle-container" id="particle-container">
+        <h1>ダウンロード</h1>
+
+				<div class="nav">
+          <div class="menu closed">
+              <div class="messages button2" data-url="movie.html" data-desc="動画"></div>
+              <div class="music button2" data-url="gamerole.html" data-desc="ゲーム説明"></div>
+              <div class="home button2" data-url="game.html" data-desc="ホーム"></div>
+              <div class="places button2" data-url="download.html" data-desc="ダウンロード"></div>
+              <div class="bookmark button2" data-url="../site.html" data-desc="戻る"></div>
+              <div class="main button">Menu</div>
+          </div>
+      
+      </div>
+          
+
+
+
+<!-- 魔法陣を右上に固定表示するラッパー -->
+<div class="magic-circle-wrapper">
+    <svg class="magic-circle" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+      <!-- spinner により、全パーツをまとめ、後で回転させる -->
+      <g class="spinner">
+        <!-- 外側の大円 -->
+        <circle class="outer-circle" cx="500" cy="500" r="450"/>
+        <!-- 内部のディテール用円（インラインスタイルは削除済み） -->
+        <circle class="inner-circle1" cx="500" cy="500" r="435.555"/>
+        <circle class="inner-circle2" cx="500" cy="500" r="428.889"/>
+        <circle class="inner-circle3" cx="500" cy="500" r="428.889"/>
+        <g class="inner-group">
+          <!-- 内側の大円 -->
+          <circle class="inner-circle4" cx="500" cy="500" r="377"/>
+          <!-- 大きい六角形 -->
+          <polygon class="polygon-1" points="312.793,824 125.586,500 312.793,176 687.207,176 874.414,500 687.207,824"/>
+          <!-- サブ六角形 -->
+          <polygon class="polygon-2" points="319.149,813.5 138.297,500.5 319.149,187.5 680.852,187.5 861.702,500.5 680.852,813.5"/>
+          <!-- さらに内側の円 -->
+          <circle class="inner-circle5" cx="500" cy="500" r="311.5"/>
+          <!-- 中央シンボルパス群① -->
+          <g class="path-group-1">
+            <path class="path-1" d="M500,195.281L764.841,654H235.159L500,195.281 M500,189.281L229.963,657h540.074L500,189.281L500,189.281z"/>
+          </g>
+          <!-- 中央シンボルパス群② -->
+          <g class="path-group-2">
+            <path class="path-2" d="M764.3,347L500,804.008L235.701,347H764 M769.5,344h-539L500,810L769.5,344L769.5,344z"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  
+    <!-- JavaScript -->
+    <script>
+        document.getElementById("magic-download-button").addEventListener("click", function () {
+            // キラキラアニメーションとダウンロード処理を実行
+            const zipUrl = "./sample.zip"; // ZIPファイルのパス
+            const a = document.createElement("a");
+            a.href = zipUrl; // ファイルのリンク
+            a.download = "sample.zip"; // ダウンロード時のファイル名を指定
+            a.style.display = "none"; // 非表示
+            document.body.appendChild(a); // 一時的にDOMに追加
+            a.click(); // 自動的にクリックを実行
+            document.body.removeChild(a); // ダウンロード後にDOMから削除
+        });
+    </script>
+</body>
+</html>

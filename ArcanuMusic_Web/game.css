@@ -1,0 +1,916 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "MyFont";
+  src: url("./font/Hangyaku-G3rpg.ttf") format("truetype");
+}
+@font-face {
+  font-family: "MyFont2";
+  src: url("./font/Makinas-4-Flat.otf") format("opentype");
+}
+html {
+  font-family: "MyFont2";
+  background: #f8f7f2;
+}
+
+#titleimage {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+h1 {
+  width: 55%;
+  margin: 50px auto;
+  font-family: "MyFont", sans-serif; /* フォントの指定 */
+  text-align: center; /* 中央寄せ */
+  font-size: 3.8rem; /* 文字サイズを大きく設定 */
+  color: #fff; /* 文字色を白に設定 */
+  position: relative; /* 擬似要素を相対的に配置 */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 柔らかな光の効果 */
+  line-height: 1.5; /* 行間を広げる */
+  letter-spacing: 0.1em; /* 少し文字間隔を広げる */
+}
+
+/* 光のパーティクルを擬似要素で表現 */
+h1::before,
+h1::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.8); /* 光の点 */
+  border-radius: 50%; /* 丸い形に設定 */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.9); /* 輝きを追加 */
+  animation: sparkle 3s infinite ease-in-out; /* キラキラ効果 */
+}
+
+h1::before {
+  top: -30px;
+  left: 20%;
+  animation-delay: 0.5s; /* アニメーションの遅延 */
+}
+
+h1::after {
+  bottom: -30px;
+  right: 20%;
+  animation-delay: 1.2s;
+}
+
+/* キラキラ効果のアニメーション */
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+h2 {
+  font-family: "MyFont", sans-serif; /* フォントの指定 */
+  letter-spacing: 0.3em; /* 少し文字間隔を広げる */
+  font-size: 2rem; /* 文字サイズを大きく設定 */
+  text-align: center; /* 中央寄せ */
+}
+
+h3 {
+  font-family: "MyFont", sans-serif; /* フォントの指定 */
+  letter-spacing: 0.3em; /* 少し文字間隔を広げる */
+  font-size: 1.3rem; /* 文字サイズを大きく設定 */
+  text-align: center; /* 中央寄せ */
+}
+
+h4 {
+  font-family: "MyFont", sans-serif; /* フォントの指定 */
+  position: absolute; /* 固定配置 */
+  bottom: -20px; /* 下からの距離 */
+  right: 5px; /* 右からの距離 */
+  font-size: 1.2rem; /* 文字サイズを適度に設定 */
+  color: #333; /* 濃い文字色で視認性を確保 */
+  padding: 5px 10px; /* テキスト周囲に余白を追加 */
+  border-radius: 5px; /* 角を丸くして柔らかい印象に */
+}
+
+#bookimg {
+  z-index: 2147483647; /* 最大のz-index値で最前面に配置 */
+  position: absolute;
+  width: 307.2px;
+  height: 172.8px;
+  left: 12%;
+  top: 40%;
+}
+
+#playmovie {
+  width: 60%;
+  display: block;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+
+.con {
+  text-align: center;
+}
+
+.productDetail {
+  width: 60%;
+  left: 50%;
+  margin: auto;
+  margin-top: 36px;
+  text-align: left;
+  padding-top: 0px;
+  border-top: solid 2px;
+}
+
+.productDetail td {
+  font-size: 15px;
+}
+
+.productDetail th, .productDetail td {
+  position: relative;
+  padding: 13px 0 11px;
+  border-bottom: solid 2px #f0f0f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.productDetail th {
+  width: 140px;
+}
+
+.nav {
+  position: relative;
+  z-index: 9999;
+  /* 他のすべての要素より前に配置 */
+}
+
+.menu, .button, .button2 {
+  width: 100px;
+  height: 100px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.menu {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  transition: transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transform: scale3d(1, 1, 1);
+  transform-origin: top left;
+  cursor: pointer;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  /* 完全な円形に設定 */
+  mix-blend-mode: multiply;
+  background-position: center center;
+  /* アイコンを中央に表示 */
+  background-repeat: no-repeat;
+  background-size: 33%;
+  /* アイコンのサイズ */
+  font: 25px/100px;
+  /* フォント設定 */
+  transition: transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  /* スムーズなアニメーション */
+  will-change: transform;
+  /* パフォーマンス向上 */
+  cursor: pointer;
+  /* クリック可能なカーソルを表示 */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  /* テキスト選択を無効化 */
+  display: flex;
+  /* アイコンやテキストを中央配置 */
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  /* ホバー時に少し拡大 */
+}
+
+.button.closed {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.button2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  /* 完全な円形に設定 */
+  mix-blend-mode: multiply;
+  background-position: center center;
+  /* アイコンを中央に表示 */
+  background-repeat: no-repeat;
+  background-size: 33%;
+  /* アイコンのサイズ */
+  font: 25px/100px;
+  /* フォント設定 */
+  transition: transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  /* スムーズなアニメーション */
+  will-change: transform;
+  /* パフォーマンス向上 */
+  cursor: pointer;
+  /* クリック可能なカーソルを表示 */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  /* テキスト選択を無効化 */
+  display: flex;
+  /* アイコンやテキストを中央配置 */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.button2:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(100, 100, 255, 0.8);
+  /* ホバー時の光の強調 */
+}
+
+/* 輝きを表現するキーフレーム */
+@keyframes sparkle {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(100, 100, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 35px rgba(100, 100, 255, 0.8);
+  }
+}
+/* 色ごとの背景を調整 */
+.home {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(238, 86, 86, 0.5) 45%, transparent 50%), repeating-conic-gradient(rgba(255, 255, 255, 0.3) 0% 10%, transparent 10% 20%);
+}
+
+.music {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(27, 165, 205, 0.5) 45%, transparent 50%), repeating-conic-gradient(rgba(255, 255, 255, 0.3) 0% 10%, transparent 10% 20%);
+}
+
+.messages {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(26, 178, 84, 0.5) 45%, transparent 50%), repeating-conic-gradient(rgba(255, 255, 255, 0.3) 0% 10%, transparent 10% 20%);
+}
+
+.places {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(254, 199, 46, 0.5) 45%, transparent 50%), repeating-conic-gradient(rgba(255, 255, 255, 0.3) 0% 10%, transparent 10% 20%);
+}
+
+.bookmark {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(250, 125, 57, 0.5) 45%, transparent 50%), repeating-conic-gradient(rgba(255, 255, 255, 0.3) 0% 10%, transparent 10% 20%);
+}
+
+main {
+  color: #fff;
+}
+
+.main {
+  color: #FFF;
+  text-align: center;
+  mix-blend-mode: normal;
+  line-height: 100px;
+  box-shadow: 0 0 0 1px rgba(159, 145, 255, 0.8);
+  transition: border-color 0.75s, color 0.75s;
+  will-change: color, border-color;
+}
+
+@keyframes glowEffect {
+  0%, 100% {
+    box-shadow: 0 0 5px 2px rgba(72, 61, 139, 0.5), 0 0 8px 4px rgba(123, 104, 238, 0.4), 0 0 10px 5px rgba(255, 182, 193, 0.3); /* 控えめなピンクの光 */
+  }
+  50% {
+    box-shadow: 0 0 7px 3px rgba(72, 61, 139, 0.6), 0 0 10px 5px rgba(123, 104, 238, 0.5), 0 0 12px 6px rgba(255, 182, 193, 0.4); /* 控えめなピンクの光 */
+  }
+}
+/* ボタンごとの画像を設定 */
+.home::before,
+.music::before,
+.messages::before,
+.places::before,
+.bookmark::before {
+  content: "";
+  position: absolute;
+  width: 80%; /* 画像サイズを固定 */
+  height: 80%;
+  border-radius: 50%; /* アイコン画像を丸くする */
+  background-size: cover; /* 画像がぴったり収まるようにする */
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  /* サイズ変化アニメーションを削除 */
+}
+
+/* 丸い背景付きの説明スタイル */
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: 90%; /* ボタンの右側に配置 */
+  transform: translateY(-50%) translateX(-10px);
+  background: linear-gradient(135deg, rgba(123, 104, 238, 0.6), rgba(255, 20, 147, 0.6), rgba(0, 191, 255, 0.6));
+  color: #fff;
+  padding: 10px;
+  border-radius: 10%; /* 丸い背景 */
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0; /* 初期状態で非表示 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* マウスイベントを無効化 */
+  z-index: 9999; /* 前面に表示 */
+  color: #fff; /* テキストを白色に */
+  box-shadow: 0 0 15px rgba(123, 104, 238, 0.5), 0 0 30px rgba(255, 20, 147, 0.7), 0 0 45px rgba(0, 191, 255, 0.9); /* 輝く魔法の光 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: glowMagic 3s infinite, pulseMagic 2s ease-in-out infinite;
+}
+
+/* ホバー時の説明エリア */
+.button2:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* クローズ状態で説明を表示しない条件 */
+.menu.closed .button2:hover .tooltip {
+  opacity: 0; /* 説明を非表示 */
+}
+
+/* 各ボタンの個別画像設定と色調整 */
+.home::before {
+  background-image: url("images/homeicon.png"); /* Home用の画像URL */
+  filter: hue-rotate(0deg); /* Homeボタンに合う色調 */
+}
+
+.music::before {
+  background-image: url("images/setumeiicon.png"); /* Music用の画像URL */
+  filter: hue-rotate(210deg); /* Musicボタンに合う青色の調整 */
+}
+
+.messages::before {
+  background-image: url("images/movieicon.png"); /* Messages用の画像URL */
+  filter: hue-rotate(120deg); /* Messagesボタンに合う緑色の調整 */
+}
+
+.places::before {
+  background-image: url("images/downloadicon.png"); /* Places用の画像URL */
+  filter: hue-rotate(60deg); /* Placesボタンに合う黄色の調整 */
+}
+
+.bookmark::before {
+  background-image: url("images/backicon.png"); /* Bookmark用の画像URL */
+  filter: hue-rotate(30deg); /* Bookmarkボタンに合うオレンジ色の調整 */
+}
+
+/* 発光の脈動エフェクト */
+@keyframes pulseEffect {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 153, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 153, 255, 0.9);
+  }
+}
+.closed .main {
+  color: #f8f7f2;
+  box-shadow: 0 0 0 5px rgba(3, 15, 1, 0);
+}
+
+.home {
+  background-color: #ee5656;
+  top: 0%;
+  left: 225%;
+  transition-duration: 0.525s;
+}
+
+.closed .home {
+  transform: translate3d(-225%, -10%, 0) rotate(-180deg);
+}
+
+.music {
+  background-color: #1ba5cd;
+  top: 86.103675%;
+  left: 207.873%;
+  transition-duration: 0.675s;
+}
+
+.closed .music {
+  transform: translate3d(-198.36244%, -89.193835%, 0) rotate(-180deg);
+}
+
+.messages {
+  background-color: #1ab254;
+  top: 159.099075%;
+  left: 159.099075%;
+  transition-duration: 0.825s;
+}
+
+.closed .messages {
+  transform: translate3d(-153.221215%, -151.008915%, 0) rotate(-180deg);
+}
+
+.places {
+  background-color: #fec72e;
+  top: 207.873%;
+  left: 86.103675%;
+  transition-duration: 0.975s;
+}
+
+.closed .places {
+  transform: translate3d(-91.981535%, -199.78284%, 0) rotate(-180deg);
+}
+
+.bookmark {
+  background-color: #fa7d39;
+  top: 225%;
+  left: 0%;
+  transition-duration: 1.125s;
+}
+
+.closed .bookmark {
+  transform: translate3d(-9.51056%, -228.09016%, 0) rotate(-180deg);
+}
+
+/*魔法*/
+/*ゲームルール*/
+.book {
+  margin: auto;
+}
+
+.pages {
+  color: black;
+}
+
+.my-page {
+  background-color: #ffdbdb;
+}
+
+.p-right {
+  border-left: 0;
+  box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.p-left {
+  border-right: 0;
+  box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.bookCover {
+  background-color: #1f150a;
+  box-shadow: 10px 5px 5px black;
+}
+
+
+/*gamerole*/
+/* コンテナの中央揃え */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 横方向に中央揃え */
+  align-items: center; /* 縦方向に中央揃え */
+  min-height: 60vh; /* 縦方向を画面いっぱいに */
+  gap: 20px; /* ボタン間のスペース */
+}
+
+/* ボタンのスタイル */
+/* ボタンのスタイル */
+.bookbutton {
+  /* 既存のスタイル */
+  width: 150px;
+  height: 250px;
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 説明用スタイル */
+.bookbutton::after {
+  content: attr(data-desc); /* データ属性から説明を取得 */
+  position: absolute;
+  top: -60px;
+  background: transparent; /* 背景を初期状態で透明に */
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 15px; /* 丸みを強調して柔らかい印象に */
+  font-family: "myFont2";
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease, 0.5s ease;
+  white-space: nowrap; /* テキストの改行を防ぐ */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.8); /* 光の効果を追加 */
+}
+
+/* ホバー時に説明を表示 */
+.bookbutton:hover::after {
+  opacity: 1; /* 説明を表示 */
+  transform: translateY(10px); /* 下からスムーズに登場する動きを追加 */
+  background: var(--desc-bg-color); /* ボタンに応じた背景色を適用 */
+}
+
+/* ボタンごとの背景色の設定 */
+.red {
+  background: linear-gradient(45deg, #ee5656, #fa9494);
+}
+
+.bookbutton.red::after {
+  --desc-bg-color: linear-gradient(45deg, #ee5656, #fa9494); /* 赤の背景色 */
+}
+
+.blue {
+  background: linear-gradient(45deg, #1ba5cd, #63c4e1);
+}
+
+.bookbutton.blue::after {
+  --desc-bg-color: linear-gradient(45deg, #1ba5cd, #63c4e1); /* 青の背景色 */
+}
+
+.green {
+  background: linear-gradient(45deg, #1ab254, #6cd98a);
+}
+
+.bookbutton.green::after {
+  --desc-bg-color: linear-gradient(45deg, #1ab254, #6cd98a); /* 緑の背景色 */
+}
+
+.yellow {
+  background: linear-gradient(45deg, #fec72e, #ffd57a);
+}
+
+.bookbutton.yellow::after {
+  --desc-bg-color: linear-gradient(45deg, #fec72e, #ffd57a); /* 黄色の背景色 */
+}
+
+body, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+/*動画*/
+.video-expanded {
+  width: 830px; /* 再生時の幅 */
+  height: 520px; /* 再生時の高さ */
+}
+
+#myVideo {
+  z-index: 2147483647; /* 最大のz-index値で最前面に配置 */
+  position: absolute;
+  width: 307.2px;
+  height: 172.8px;
+  left: 12%;
+  cursor: pointer; /* マウスポインタをボタン風に */
+  pointer-events: auto; /* クリックイベントを有効化 */
+  border-radius: 12px; /* 柔らかい角 */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(173, 216, 230, 0.8); /* 青緑の幻想的な光 */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.2)); /* 優しい輝きの背景 */
+}
+
+#myVideo:hover {
+  transform: scale(1.1); /* 拡大して注目を集める */
+  box-shadow: 0 0 25px rgba(173, 216, 230, 0.8), 0 0 50px rgb(0, 255, 255), 0 0 75px rgba(0, 128, 255, 0.9); /* 強い光の効果 */
+  border: 3px solid rgba(0, 255, 255, 0.8); /* 輝く青緑の枠線 */
+  background: radial-gradient(circle, #6dd5ed, #00bfff, #2193b0); /* ホバー時に魔法的なグラデーション */
+}
+
+/* キラキラする星のエフェクト */
+#myVideo::before,
+#myVideo::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, rgb(255, 255, 255), rgba(0, 255, 255, 0.5));
+  border-radius: 50%; /* 丸い光を表現 */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.9);
+  animation: sparkle 1.5s infinite ease-in-out; /* 光の移動アニメーション */
+}
+
+#myVideo::before {
+  top: -20px;
+  left: 20%;
+  animation-delay: 0.3s; /* アニメーション開始を遅延 */
+}
+
+#myVideo::after {
+  bottom: -20px;
+  right: 25%;
+  animation-delay: 0.6s;
+}
+
+/* 星の動きのアニメーション */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translateY(-10px);
+  }
+}
+.video1 {
+  top: 40%;
+}
+
+.video5 {
+  top: 57%;
+}
+
+/*本*/
+#redbook {
+  position: absolute;
+  width: 830px;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -200px;
+}
+
+#bluebook {
+  position: absolute;
+  width: 830px;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -200px;
+}
+
+#yellowbook {
+  position: absolute;
+  width: 830px;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -200px;
+}
+
+#greenbook {
+  position: absolute;
+  width: 830px;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -200px;
+}
+
+.redbook {
+  background: url("images/redbook.png") no-repeat;
+}
+
+.bluebook {
+  background: url("images/bluebook.png") no-repeat;
+}
+
+.greenbook {
+  background: url("images/greenbook.png") no-repeat;
+}
+
+.yellowbook {
+  background: url("images/yellowbook.png") no-repeat;
+}
+
+#pages {
+  z-index: 1; /* 親要素のz-indexを低く設定 */
+  position: relative; /* 必須 */
+}
+
+#pages section {
+  background: url("images/paper.png") no-repeat;
+  display: block;
+  width: 400px;
+  height: 500px;
+  position: absolute;
+  z-index: 1; /* 背景のz-indexを低く設定 */
+  left: 415px;
+  top: 10px;
+  overflow: hidden;
+  color: #000;
+}
+
+#pages section > div {
+  display: block;
+  width: 400px;
+  height: 500px;
+  font-size: 12px;
+  background-image: none;
+}
+
+#pages section p,
+#pages section h1 {
+  padding: 3px 25px;
+  line-height: 1.4em;
+  text-align: justify;
+}
+
+#pages section h2 {
+  padding: 3px 25px;
+  line-height: 1.4em;
+}
+
+#pages section h2 {
+  margin: 15px 0 10px;
+}
+
+#pageflip-canvas-red {
+  pointer-events: none; /* クリックイベントを無効化 */
+  position: absolute;
+  z-index: 100;
+} 
+#pageflip-canvas-blue {
+  pointer-events: none; /* クリックイベントを無効化 */
+  position: absolute;
+  z-index: 100;
+} 
+#pageflip-canvas-yellow {
+  pointer-events: none; /* クリックイベントを無効化 */
+  position: absolute;
+  z-index: 100;
+} 
+#pageflip-canvas-green {
+  pointer-events: none; /* クリックイベントを無効化 */
+  position: absolute;
+  z-index: 100;
+} 
+.hidden {
+  display: none;
+}
+
+.close-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  font-size: 24px; /* 少し大きくして存在感アップ */
+  color: white;
+  background: radial-gradient(circle, rgba(255, 100, 100, 0.9), rgba(255, 20, 147, 0.6));
+  border: none;
+  border-radius: 50%; /* 丸いボタンで可愛らしさ追加 */
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 192, 203, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.close-button:hover {
+  transform: scale(1.2); /* ホバー時に少し拡大して強調 */
+  box-shadow: 0 0 30px rgb(255, 105, 180), inset 0 0 15px rgba(255, 255, 255, 0.8); /* 光の輝きが強くなる */
+}
+
+.close-button::before {
+  content: "×";
+  font-weight: bold;
+  font-size: 26px;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 192, 203, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 30px rgb(255, 105, 180), 0 0 45px rgba(255, 192, 203, 0.8), inset 0 0 15px rgb(255, 255, 255);
+  }
+}
+.close-button {
+  animation: glowPulse 2s infinite ease-in-out; /* 輝きを周期的に変化 */
+}
+
+@keyframes magicalAppear {
+  0% {
+    transform: translateY(50px) scale(0.8); /* 下から小さな状態で開始 */
+    opacity: 0; /* 完全に透明 */
+    filter: blur(10px); /* ぼやけた状態 */
+  }
+  60% {
+    transform: translateY(-10px) scale(1.1); /* 少し拡大して上がる */
+    opacity: 0.8; /* 半透明 */
+    filter: blur(2px); /* ぼやけを減少 */
+  }
+  100% {
+    transform: translateY(0) scale(1); /* 元の位置に */
+    opacity: 1; /* 完全に表示 */
+    filter: blur(0); /* 鮮明に */
+  }
+}
+.book {
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 通常のトランジション */
+  opacity: 0; /* 初期は非表示 */
+  transform: translateY(0px) scale(1); /* 初期状態：小さく下に位置 */
+}
+
+.book.visible {
+  animation: magicalAppear 1s ease-out; /* 魔法エフェクトを適用 */
+  opacity: 1; /* 表示状態 */
+}
+
+/*パーティクル*/
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+.particle-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #000, #2b2b2b);
+  transition: background-color 0.5s ease;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 15px;
+  animation: sparkle 1.5s infinite ease-in-out;
+  mix-blend-mode: screen;
+}
+.particle::before {
+  content: attr(data-symbol);
+}
+
+.magic-button-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+}
+.magic-button-container #magic-download-button {
+  position: relative;
+  font-size: 26px;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #6d5dfc, #c084fc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* 基本状態で魔法らしいグロウ（揺れる輝き）の演出 */
+  box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+  animation: magicalGlow 2s infinite;
+  /* 擬似要素で表面にキラキラ効果 */
+}
+.magic-button-container #magic-download-button:hover {
+  transform: scale(1.1);
+  /* ホバー時はグロウが強調される */
+  box-shadow: 0 0 20px #6d5dfc, 0 0 30px #c084fc, 0 0 40px #c084fc;
+}
+.magic-button-container #magic-download-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  transform: scale(0);
+  opacity: 0.7;
+  transition: transform 0.4s ease;
+  z-index: -1;
+}
+.magic-button-container #magic-download-button:hover::before {
+  transform: scale(1);
+}
+
+/* 魔法らしいグローアニメーション */
+@keyframes magicalGlow {
+  0% {
+    box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+  }
+  50% {
+    box-shadow: 0 0 20px #6d5dfc, 0 0 30px #c084fc, 0 0 40px #c084fc;
+  }
+  100% {
+    box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+  }
+}/*# sourceMappingURL=game.css.map */

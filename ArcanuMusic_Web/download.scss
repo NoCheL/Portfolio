@@ -1,0 +1,321 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;   // ビューポートの幅いっぱいに設定
+  height: 100vh;  // ビューポートの高さいっぱいに設定
+  overflow-x: hidden; // 横スクロールが不要な場合
+}
+
+$particle-size: 15px; // デフォルトサイズを大きめに設定
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.particle-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #000, #2b2b2b);
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: $particle-size; // サイズをSCSSで設定
+  font-family: 'Fantasy', sans-serif;
+  animation: sparkle 1.5s infinite ease-in-out;
+  mix-blend-mode: screen;
+
+  &::before {
+    content: attr(data-symbol);
+  }
+}
+
+
+$primary-gradient: linear-gradient(45deg, #6d5dfc, #c084fc);
+$background-color: #111;
+
+.magic-button-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  
+  #magic-download-button {
+    position: relative;
+    font-size: 26px;            // フォントサイズを大きく
+    padding: 15px 30px;         // パディングを拡大
+    background: $primary-gradient;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* 基本状態で魔法らしいグロウ（揺れる輝き）の演出 */
+    box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+    animation: magicalGlow 2s infinite;
+  
+    &:hover {
+      transform: scale(1.1);
+      /* ホバー時はグロウが強調される */
+      box-shadow: 0 0 20px #6d5dfc, 0 0 30px #c084fc, 0 0 40px #c084fc;
+    }
+  
+    /* 擬似要素で表面にキラキラ効果 */
+    &::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      transform: scale(0);
+      opacity: 0.7;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+  
+    &:hover::before {
+      transform: scale(1);
+    }
+  }
+}
+
+/* 魔法らしいグローアニメーション */
+@keyframes magicalGlow {
+  0% {
+    box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+  }
+  50% {
+    box-shadow: 0 0 20px #6d5dfc, 0 0 30px #c084fc, 0 0 40px #c084fc;
+  }
+  100% {
+    box-shadow: 0 0 10px #6d5dfc, 0 0 20px #c084fc, 0 0 30px #c084fc;
+  }
+}
+/*魔法陣*/
+// styles.scss
+.magic-spark {
+  position: absolute;
+  width: 10px; // 初期サイズ
+  height: 10px;
+  background: radial-gradient(circle, #fff, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: magicFadeOut 1.2s ease-out forwards;
+  mix-blend-mode: screen;
+}
+
+@keyframes magicFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+}
+
+
+
+/* ページ背景 */
+
+/* 魔法陣を右上に固定するラッパー */
+/* ※ ヘッダーなど他の固定要素よりも前面に表示するため、z-index を十分高く設定 */
+.magic-circle-wrapper {
+  position: fixed;
+  top: 20px;         // 必要に応じて調整
+  right: 20px;       // 必要に応じて調整
+  width: 300px;      // 表示サイズ
+  height: 300px;     // 表示サイズ
+  z-index: 9999;     // ヘッダーより上に出したい場合は、さらに高く設定（例：z-index: 10000）
+  pointer-events: none;
+}
+
+/* SVGサイズ */
+.magic-circle {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── 各パーツの「書かれる」アニメーション ─── */
+
+/* 外側の大円 (半径450 → circumference ≒ 2827) */
+.outer-circle {
+  fill: none;
+  stroke: #6d5dfc !important;  // 濃い紫
+  stroke-width: 10;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 2827;
+  stroke-dashoffset: 2827;
+  animation: drawOuter 2s forwards ease-out;
+}
+
+/* 内部のディテール用円 – 複数同じ設定（仮に同じ円周長値を適用） */
+.inner-circle1,
+.inner-circle2,
+.inner-circle3 {
+  fill: none;
+  stroke: #c084fc !important;  // ライトパープル
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 2700;
+  stroke-dashoffset: 2700;
+  animation: drawInner 2s forwards ease-out;
+  animation-delay: 2s;
+}
+
+/* 内側グループ内大円 (半径377 → circumference ≒ 2368) */
+.inner-group > .inner-circle4 {
+  fill: none;
+  stroke: #6d5dfc !important;
+  stroke-width: 6;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 2368;
+  stroke-dashoffset: 2368;
+  animation: drawInnerGroup 2s forwards ease-out;
+  animation-delay: 2.5s;
+}
+
+/* ── 大きい六角形 ── */
+.polygon-1 {
+  fill: none;
+  stroke: #c084fc !important;  // ライトパープル
+  stroke-width: 6;
+  stroke-miterlimit: 10;
+  /* 六角形の輪郭長は実際の数値に合わせる必要がありますが、ここでは仮に1500とする */
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  animation: drawPolygon 2s forwards ease-out;
+  animation-delay: 3s;
+}
+
+/* ── サブ六角形 ── */
+.polygon-2 {
+  fill: none;
+  stroke: #6d5dfc !important;  // 濃い紫
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  animation: drawPolygon 2s forwards ease-out;
+  animation-delay: 3.5s;
+}
+
+/* ※ 六角形用の共通アニメーション */
+@keyframes drawPolygon {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── 中央シンボルパス群（色を黒から魔法陣らしい紫に変更） ── */
+.path-group-1 > .path-1,
+.path-group-2 > .path-2 {
+  /* 初期状態：非表示 */
+  opacity: 0;
+  animation: fadeIn 1s forwards ease-out;
+  animation-delay: 4.5s;
+  /* 黒ではなく、魔法陣らしい紫に設定 */
+  fill: #6d5dfc;  /* お好みで #c084fc や #9b59b6 などに変更可能 */
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* さらに内側の円 (inner-circle5, 半径311.5 → circumference ≒ 1956) */
+.inner-group > .inner-circle5 {
+  fill: none;
+  stroke: #c084fc !important;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1956;
+  stroke-dashoffset: 1956;
+  animation: drawInnerGroup 2s forwards ease-out;
+  animation-delay: 4s;
+}
+
+
+/* ─── キーフレーム定義 ─── */
+@keyframes drawOuter {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes drawInner {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes drawInnerGroup {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes drawPolygon {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ─── spinner: 描画完了後、全体が回転 ─── */
+/* spinner は描画終了後に回転を開始（delay 4秒） */
+.spinner {
+  transform-origin: 50% 50%;
+  animation: spin 10s linear infinite;
+  animation-delay: 4s;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* ─── spinner: 描画完了後、全体が回転＆光るアニメーション ─── */
+.spinner {
+  transform-origin: 50% 50%;
+  /* spinとmagicPulseを同時に適用。両方に4秒の遅延（初期描画終了後に開始） */
+  animation: spin 10s linear infinite 4s, magicPulse 8s ease-in-out infinite 4s;
+}
+
+/* 回転アニメーション */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* 魔法陣の輝き＆フェードイン・アウトアニメーション */
+@keyframes magicPulse {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #c084fc);
+  }
+  40% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px #6d5dfc);
+  }
+  50% {
+    opacity: 0;
+    filter: drop-shadow(0 0 5px #6d5dfc);
+  }
+  60% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px #6d5dfc);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #c084fc);
+  }
+}
