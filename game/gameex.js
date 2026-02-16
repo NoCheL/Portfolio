@@ -14,21 +14,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. メイン表示の切り替え
             if (type === 'video') {
-                // 画像を非表示
+                // --- 動画を表示する場合 ---
                 mainImage.classList.remove('active');
                 
-                // 動画を表示・再生
-                mainVideo.src = src;
+                // srcが変わる場合のみ読み込み直す（再生位置リセット防止）
+                if (!mainVideo.src.includes(src)) {
+                    mainVideo.src = src;
+                }
+                
                 mainVideo.classList.add('active');
-                mainVideo.play();
+                mainVideo.play().catch(e => console.log("Auto-play blocked"));
+                
             } else {
-                // 動画を停止・非表示
+                // --- 画像を表示する場合 ---
                 mainVideo.pause();
                 mainVideo.classList.remove('active');
-                
-                // 画像を表示
+
+                // 画像のsrcをセットしてから表示
                 mainImage.src = src;
-                mainImage.classList.add('active');
+                
+                // 画像の読み込み完了を待ってからactiveにするとスムーズ
+                mainImage.onload = () => {
+                    mainImage.classList.add('active');
+                };
+                
+                // もし既にキャッシュされている場合はすぐ表示
+                if (mainImage.complete) {
+                    mainImage.classList.add('active');
+                }
             }
         });
     });

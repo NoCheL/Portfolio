@@ -17,9 +17,9 @@
                 
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="index.html" class="active-link">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="game.html">Game</a></li>
-                        <li><a href="site.html">Site</a></li>
+                        <li><a href="site.html" class="active-link">Site</a></li>
                         <li><a href="music.html">Music</a></li>
                         <li><a href="other.html">Other</a></li>
                     </ul>
@@ -30,7 +30,7 @@
                     <span></span>
                 </div>
             </div>
-        </div>        
+        </div>
         <section class="hero">
             <div class="plum-blossoms-container"></div>
             <div class="hero-inner">
@@ -46,40 +46,49 @@
                 <div class="hero-text">
                     <span class="view-more">Selected Works</span>
                     <h1 class="main-copy">SITE</h1>
-                </div>    
+                </div>
             </div>
         </section>
-    </header>    
+    </header>
 
-<main class="site-container">
-    <a href="#" target="_blank" class="card-link">
-        <div class="card" style="--theme-color: #00c6c6;">
-            <div class="card-content">
-                <div class="pic" style="background-image: url('image/main1.png');"></div>
-                <div class="glitch-overlay"></div>
-                <p class="category">// No: 01</p>
-                <h2>ARCUNUMBER</h2>
-                <div class="frame-decor"></div>
-                <i class="fas fa-arrow-right main-arrow"></i>
-                <button class="expand-btn" aria-hidden="true"></button>
-            </div>
+    <main>
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="2024">2024</button>
+            <button class="filter-btn" data-filter="2025">2025</button>
+            <button class="filter-btn" data-filter="2026">2026</button>
         </div>
-    </a>
 
-    <a href="#" target="_blank" class="card-link">
-        <div class="card" style="--theme-color: #4d4dff;">
-            <div class="card-content">
-                <div class="pic" style="background-image: url('image/main2.png');"></div>
-                <div class="glitch-overlay"></div>
-                <p class="category">// No: 02</p>
-                <h2>ARCNUMUSIC</h2>
-                <div class="frame-decor"></div>
-                <i class="fas fa-arrow-right main-arrow"></i>
-                <button class="expand-btn" aria-hidden="true"></button>
-            </div>
-        </div>
-    </a>
-</main>
+        <section class="site-container">
+            <a href="Arcanumber_Web/game.html" class="card-link" data-year="2024">
+                <div class="card" style="--theme-color: #bb00ff;">
+                    <div class="card-content">
+                        <div class="pic" style="background-image: url('image/ARCANUMBER_header.jpg');"></div>
+                        <div class="glitch-overlay"></div>
+                        <p class="category">// No: 01</p>
+                        <h2>ARCUNUMBER</h2>
+                        <div class="frame-decor"></div>
+                        <i class="fas fa-arrow-right main-arrow"></i>
+                        <button class="expand-btn" aria-hidden="true"></button>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ArcanuMusic_Web/game.html" class="card-link" data-year="2025">
+                <div class="card" style="--theme-color: #ff005d;">
+                    <div class="card-content">
+                        <div class="pic" style="background-image: url('image/ArcanuMusic_header.png');"></div>
+                        <div class="glitch-overlay"></div>
+                        <p class="category">// No: 02</p>
+                        <h2>ARCNUMUSIC</h2>
+                        <div class="frame-decor"></div>
+                        <i class="fas fa-arrow-right main-arrow"></i>
+                        <button class="expand-btn" aria-hidden="true"></button>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
 
     <footer class="site-footer">
         <div class="container">
@@ -99,5 +108,6 @@
         </div>
     </footer>
     <script src="js/js.js"></script>
+    <script src="js/site.js"></script>
 </body>
 </html>

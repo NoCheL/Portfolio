@@ -1,3 +1,39 @@
+/* --- フィルターボタンエリア（他ページと統一） --- */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 20px 0; /* 下パディングを0にしてグリッドとの距離を調整 */
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    letter-spacing: 1px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    border-color: #00c6c6;
+    color: #00c6c6;
+    background: rgba(0, 198, 198, 0.05);
+    box-shadow: 0 0 20px rgba(0, 198, 198, 0.15);
+}
+
+/* フィルタリング時の非表示用 */
+.card-link.hidden {
+    display: none !important;
+}
+
 /* --- 全体レイアウト --- */
 .site-container {
     display: grid;
@@ -5,21 +41,22 @@
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 60px 20px 80px;
 }
 
 .card-link {
     text-decoration: none;
     display: block;
     outline: none;
+    transition: opacity 0.4s ease;
 }
 
 /* --- サイバーカード本体 --- */
 .card {
     position: relative;
     width: 100%;
-    height: 300px; /* 少し高さを出して余裕を持たせる */
-    background-color: #05060a; /* より深い黒 */
+    height: 300px; 
+    background-color: #05060a;
     overflow: hidden;
     clip-path: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -47,10 +84,10 @@
 }
 
 .card:hover::before {
-    background-size: 35px 35px; /* ホバー時にグリッドが少し広がる演出 */
+    background-size: 35px 35px;
 }
 
-/* --- プレビュー画像（馴染ませ加工） --- */
+/* --- プレビュー画像 --- */
 .card .pic {
     position: absolute;
     inset: 0;
@@ -59,7 +96,6 @@
     height: 100%;
     background-size: cover;
     background-position: center 20%;
-    /* 初期状態：暗く、青白く、少しぼかす */
     filter: grayscale(100%) brightness(0.3) contrast(1.1) blur(1px);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -90,7 +126,7 @@
     z-index: 110;
     font-family: 'Orbitron', sans-serif;
     position: absolute;
-    bottom: 30px;
+    bottom: 5px;
     left: 35px;
     font-size: 38px;
     font-weight: 900;
@@ -132,7 +168,7 @@
     opacity: 0.15;
 }
 
-/* --- ボタン・遷移演出 --- */
+/* --- ボタン演出 --- */
 .expand-btn {
     position: absolute;
     right: -30px;
@@ -167,50 +203,16 @@
     transform: translate(0, 0);
 }
 
-/* ホバー時の文字色反転（テーマカラーに応じた暗い色に） */
 .card:hover h2 { color: #0a0b10; }
 .card:hover .category { color: rgba(0,0,0,0.5); }
 
-/* --- スマホ・タブレット用の最適化 --- */
+/* --- レスポンシブ --- */
 @media screen and (max-width: 900px) {
     .site-container {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 40px 20px;
     }
-
-    .card {
-        height: 250px;
-        clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
-    }
-
-    /* スマホは最初から少し「データ読み込み済み」の状態にする */
-    .card .pic {
-        filter: grayscale(30%) brightness(0.5) blur(0px);
-        opacity: 0.8;
-    }
-
-    .card h2 {
-        font-size: 28px;
-        bottom: 25px;
-        left: 30px;
-        text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .expand-btn {
-        transform: scale(1) !important;
-        width: 55px;
-        height: 55px;
-        right: 15px;
-        bottom: 15px;
-        opacity: 0.8;
-    }
-
-    .main-arrow {
-        opacity: 1;
-        transform: translate(0, 0);
-        font-size: 22px;
-        right: 28px;
-        bottom: 28px;
-    }
+    .card { height: 250px; }
+    .card h2 { font-size: 28px; }
 }

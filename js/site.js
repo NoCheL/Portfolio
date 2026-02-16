@@ -1,31 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.game-card');
+    const cards = document.querySelectorAll('.card-link');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // 1. アクティブなボタンの切り替え
+            // アクティブクラスの切り替え
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // 2. フィルター値を取得 (all, ARCNUMBER, etc...)
             const filterValue = btn.getAttribute('data-filter');
 
             cards.forEach(card => {
-                // 3. カードのカテゴリー属性を取得
-                const cardCategory = card.getAttribute('data-category');
+                const cardYear = card.getAttribute('data-year');
                 
-                // 4. 判定処理
-                if (filterValue === 'all' || cardCategory === filterValue) {
+                if (filterValue === 'all' || cardYear === filterValue) {
                     card.classList.remove('hidden');
-                    
-                    // フェードイン演出
+                    // フェード演出
                     card.style.opacity = "0";
-                    card.style.transform = "translateY(10px)";
                     setTimeout(() => {
-                        card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
                         card.style.opacity = "1";
-                        card.style.transform = "translateY(0)";
                     }, 10);
                 } else {
                     card.classList.add('hidden');

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポートフォリオ</title>
+    <title>ポートフォリオ - GAME</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/game.css">
 </head>
@@ -19,8 +19,8 @@
                 
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="index.html" class="active-link">Home</a></li>
-                        <li><a href="game.html">Game</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="game.html" class="active-link">Game</a></li>
                         <li><a href="site.html">Site</a></li>
                         <li><a href="music.html">Music</a></li>
                         <li><a href="other.html">Other</a></li>
@@ -32,7 +32,7 @@
                     <span></span>
                 </div>
             </div>
-        </div>        
+        </div>
         <section class="hero">
             <div class="plum-blossoms-container"></div>
             <div class="hero-inner">
@@ -48,33 +48,120 @@
                 <div class="hero-text">
                     <span class="view-more">Selected Works</span>
                     <h1 class="main-copy">GAME</h1>
-                </div>    
+                </div>
             </div>
         </section>
-    </header>    
+    </header>
 
-</header>
-    <main class="game-container">
-        <div class="game-card" style="--theme-color: #00c6c6; --card-img: url('../image/main1.png');">
-            <div class="date-badge">
-                <span class="year">2025</span>
-                <span class="month">06</span>
-            </div>
+    <main>
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="a2024">2024</button>
+            <button class="filter-btn" data-filter="a2025">2025</button>
+            <button class="filter-btn" data-filter="a2026">2026</button>
+            <button class="filter-btn" data-filter="anull">制作中</button>
+        </div>
 
-            <div class="description">
-                <div class="content">
-                    <span class="tech-stack">Unity / C#</span>
-                    <h1 class="game-title">ARCNUMBER</h1>
-                    <p class="text">なんか考え中～</p>
-                    
-                    <div class="button-group">
-                        <a href="game/ArcaNumber.html" target="_blank" class="main-link">View Details / Download</a>
+        <section class="game-container">
+            <div class="game-card" data-category="a2024" style="--theme-color: #bb00ff; --card-img: url('../image/main1.png');">
+                <div class="date-badge">
+                    <span class="year">2024</span>
+                    <span class="month">11</span>
+                </div>
+
+                <div class="description">
+                    <div class="content">
+                        <span class="tech-stack">Unity / C#</span>
+                        <h1 class="game-title">ARCNUMBER</h1>
+                        <p class="text">最大４人で遊べるオンラインアクション対戦ゲーム。組み合わせてスキルを使い最後まで生き残ろう！</p>
+                        
+                        <div class="button-group">
+                            <a href="game/ArcaNumber.html" class="main-link">View More</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        </main>    
+            <div class="game-card" data-category="a2025" style="--theme-color: #ff005d; --card-img: url('../image/main1.png');">
+                <div class="date-badge">
+                    <span class="year">2025</span>
+                    <span class="month">04</span>
+                </div>
+
+                <div class="description">
+                    <div class="content">
+                        <span class="tech-stack">Unity / C#</span>
+                        <h1 class="game-title">ArcanuMusic</h1>
+                        <p class="text">最大４人で遊べるオンラインアクション対戦ゲーム。組み合わせてスキルを使い最後まで生き残ろう！</p>
+                        
+                        <div class="button-group">
+                            <a href="game/ArcaNumber.html" class="main-link">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-category="a2025" style="--theme-color: #aee9ff; --card-img: url('../image/main1.png');">
+                <div class="date-badge">
+                    <span class="year">2025</span>
+                    <span class="month">07</span>
+                </div>
+
+                <div class="description">
+                    <div class="content">
+                        <span class="tech-stack">Unity / C#</span>
+                        <h1 class="game-title">ヌルトモ</h1>
+                        <p class="text">最大４人で遊べるオンラインアクション対戦ゲーム。組み合わせてスキルを使い最後まで生き残ろう！</p>
+                        
+                        <div class="button-group">
+                            <a href="game/ArcaNumber.html" class="main-link">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-category="a2025" style="--theme-color: #50d0ff; --card-img: url('../image/main1.png');">
+                <div class="date-badge">
+                    <span class="year">2025</span>
+                    <span class="month">07</span>
+                </div>
+
+                <div class="description">
+                    <div class="content">
+                        <span class="tech-stack">Unity / C#</span>
+                        <h1 class="game-title">FolderZipper</h1>
+                        <p class="text">最大４人で遊べるオンラインアクション対戦ゲーム。組み合わせてスキルを使い最後まで生き残ろう！</p>
+                        
+                        <div class="button-group">
+                            <a href="game/ArcaNumber.html" class="main-link">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-category="anull" style="--theme-color: #ff6600; --card-img: url('../image/main1.png');">
+                <div class="date-badge">
+                    <span class="year">2026</span>
+                    <span class="month">00</span>
+                </div>
+
+                <div class="description">
+                    <div class="content">
+                        <span class="tech-stack">Eclipse / Java</span>
+                        <h1 class="game-title"></h1>
+                        <p class="text">最大４人で遊べるオンラインアクション対戦ゲーム。組み合わせてスキルを使い最後まで生き残ろう！</p>
+                        
+                        <div class="button-group">
+                            <a href="game/ArcaNumber.html" class="main-link">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </section>
+    </main>
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-terminal">
@@ -93,6 +180,6 @@
         </div>
     </footer>
     <script src="js/js.js"></script>
-</body>
+    <script src="js/game.js"></script> </body>
 
 </html>

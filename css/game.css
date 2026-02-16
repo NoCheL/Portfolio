@@ -1,17 +1,48 @@
 /* --- グリッドレイアウトの設定 --- */
 .game-container {
     display: grid;
-    /* 音楽ページと同じ「1fr（均等幅）」を2回繰り返す設定 */
     grid-template-columns: repeat(2, 1fr); 
-    gap: 40px; /* カード同士の間隔。好みに合わせて30px〜60pxで調整してください */
-    padding: 40px 20px;
-    max-width: 1200px; /* 全体の最大幅を少し広げました */
+    gap: 40px;
+    padding: 20px 20px 80px;
+    max-width: 1100px; /* Musicページと幅を統一 */
     margin: 0 auto;
+}
+
+/* --- フィルターボタンエリア（Musicと統一） --- */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    letter-spacing: 1px;
+}
+
+/* ホバー・アクティブ時の色を紫に変更 */
+.filter-btn.active, .filter-btn:hover {
+    border-color: #bb00ff;
+    color: #bb00ff;
+    background: rgba(187, 0, 255, 0.05);
+    box-shadow: 0 0 20px rgba(187, 0, 255, 0.15);
 }
 
 /* --- カード本体 --- */
 .game-card {
-    --theme-color: #00c6c6;
+    --theme-color: #bb00ff; /* デフォルトを紫に設定 */
     width: 100%;
     height: 400px;
     position: relative;
@@ -21,6 +52,11 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.05);
     z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.game-card.hidden {
+    display: none !important;
 }
 
 /* --- 全面背景画像 --- */
@@ -35,25 +71,23 @@
     z-index: -1;
 }
 
-/* 画像に薄い影を落として文字を読みやすくする */
 .game-card::after {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);
     z-index: 2;
     pointer-events: none;
 }
 
 .game-card:hover::before {
-    transform: scale(1.1); /* ホバーで画像がゆっくりズーム */
+    transform: scale(1.1);
 }
 
 /* --- 左上の年月バッジ --- */
 .date-badge {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     padding: 12px 18px;
     background: var(--theme-color);
     color: #fff;
@@ -62,20 +96,18 @@
     align-items: center;
     border-radius: 0 0 20px 0;
     font-weight: bold;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     z-index: 10;
 }
 
-.date-badge .year { font-size: 14px; opacity: 0.9; }
-.date-badge .month { font-size: 22px; line-height: 1; }
+.date-badge .year { font-size: 12px; opacity: 0.8; }
+.date-badge .month { font-size: 20px; line-height: 1; }
 
 /* --- 説明エリア (すりガラス) --- */
 .description {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* 初期状態：タイトルのみ見える位置まで下げる */
-    transform: translateY(calc(100% - 105px)); 
+    transform: translateY(calc(100% - 100px)); 
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     z-index: 5;
 }
@@ -89,16 +121,16 @@
     background: linear-gradient(
         to top, 
         rgba(10, 12, 18, 0.98) 0%, 
-        rgba(10, 12, 18, 0.9) 80%, 
+        rgba(10, 12, 18, 0.95) 70%, 
         transparent 100%
     );
     backdrop-filter: blur(12px);
     color: #fff;
-    min-height: 150px; /* せり上がった時にボタンまで入るよう少し高さを確保 */
+    min-height: 125px;
 }
 
 .tech-stack {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--theme-color);
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -106,16 +138,16 @@
 }
 
 .game-title {
-    font-size: 1.8rem;
-    margin: 8px 0 25px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    font-size: 1.6rem;
+    margin: 5px 0 15px;
 }
 
 .text {
-    font-size: 14px;
-    color: #ddd;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    /* 3行以上は省略 */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -123,36 +155,30 @@
 }
 
 /* --- ボタンデザイン --- */
-.button-group {
-    margin-top: 15px;
-}
-
 .main-link {
     display: inline-block;
-    padding: 12px 28px;
+    padding: 10px 25px;
     background: var(--theme-color);
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
     transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .main-link:hover {
     transform: scale(1.05);
-    filter: brightness(1.1);
-    box-shadow: 0 6px 20px var(--theme-color);
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px var(--theme-color);
 }
 
-/* --- レスポンシブ（スマホ対応） --- */
+/* --- レスポンシブ --- */
 @media screen and (max-width: 900px) {
     .game-container { 
-        grid-template-columns: 1fr; /* 画面が狭いときは1列にする */
-        gap: 30px; 
+        grid-template-columns: 1fr;
+        padding: 0 15px 60px;
     }
     .game-card { height: 350px; }
-    /* スマホではタイトルが隠れすぎないよう少し調整 */
     .description { transform: translateY(calc(100% - 95px)); }
 }
