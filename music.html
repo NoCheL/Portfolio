@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポートフォリオ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ポートフォリオ - MUSIC</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/music.css">
 </head>
@@ -19,10 +19,10 @@
                 
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="index.html" class="active-link">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="game.html">Game</a></li>
                         <li><a href="site.html">Site</a></li>
-                        <li><a href="music.html">Music</a></li>
+                        <li><a href="music.html" class="active-link">Music</a></li>
                         <li><a href="other.html">Other</a></li>
                     </ul>
                 </nav>
@@ -48,20 +48,28 @@
                 <div class="hero-text">
                     <span class="view-more">Selected Works</span>
                     <h1 class="main-copy">MUSIC</h1>
-                </div>    
+                </div>
             </div>
         </section>
-    </header>    
+    </header>
 
     <main>
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="ARCNUMBER">ARCNUMBER</button>
+            <button class="filter-btn" data-filter="ARCNUMUSIC">ARCNUMUSIC</button>
+            <button class="filter-btn" data-filter="FolderZipper">FolderZipper</button>
+            <button class="filter-btn" data-filter="others">その他</button>
+        </div>
+
         <section class="music-section">
             <div class="music-grid">
-                <div class="music-item" style="--theme-color: #00c6c6; --theme-rgb: 0, 198, 198;">
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #9e00c6; --theme-rgb: 158, 0, 198;">
                     <div class="info-badge">
                         <span class="info-icon">i</span>
                         <div class="info-tooltip">
                             <h3>作品解説</h3>
-                            <p>うにゅ～</p>
+                            <p>ARUCANUMBERのタイトル曲。</p>
                         </div>
                     </div>
 
@@ -75,11 +83,14 @@
                     </div>
                     <div class="music-info">
                         <div class="text-group">
-                            <h2 class="music-title">TETORA</h2>
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">ARUCANUMBER_OP</h2>
                             <p class="artist-name"></p>
                         </div>
                         <div class="custom-player">
-                            <audio class="audio-element"><source src="audio/track1.mp3" type="audio/mpeg"></audio>
+                            <audio class="audio-element"><source src="audio/TETORAop.mp3" type="audio/mpeg"></audio>
                             <button class="play-btn">▶</button>
                             <div class="controls-group">
                                 <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
@@ -89,12 +100,12 @@
                     </div>
                 </div>
 
-                <div class="music-item" style="--theme-color: #ff3e81; --theme-rgb: 255, 62, 129;">
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #ff80ac; --theme-rgb: 255, 128, 172;">
                     <div class="info-badge">
                         <span class="info-icon">i</span>
                         <div class="info-tooltip">
                             <h3>作品解説</h3>
-                            <p>たすけて～</p>
+                            <p>ARUCANUMBERのチュートリアルで使用した曲。</p>
                         </div>
                     </div>
 
@@ -108,11 +119,14 @@
                     </div>
                     <div class="music-info">
                         <div class="text-group">
-                            <h2 class="music-title">Sakura Vibe</h2>
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">ARUCANUMBER_Tutorial</h2>
                             <p class="artist-name"></p>
                         </div>
                         <div class="custom-player">
-                            <audio class="audio-element"><source src="audio/track2.mp3" type="audio/mpeg"></audio>
+                            <audio class="audio-element"><source src="audio/最初の幕開け.wav" type="audio/mpeg"></audio>
                             <button class="play-btn">▶</button>
                             <div class="controls-group">
                                 <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
@@ -121,8 +135,549 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #ff0000; --theme-rgb: 255, 0, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>ハートのキャラクターモチーフの曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 03</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Red_Character</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Red.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #0000ff; --theme-rgb: 0, 0, 255;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>スペードのキャラクターモチーフの曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 04</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Blue_Character</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Blue.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #00ff00; --theme-rgb: 0, 255, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>クラブのキャラクターモチーフの曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 05</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Green_Character</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Green.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #ffff00; --theme-rgb: 255, 255, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>ダイヤのキャラクターモチーフの曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 06</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Yellow_Character</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Yellow.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #ffb0f8; --theme-rgb: 255, 176, 248;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>模擬戦や、NPC対戦で使用した曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 07</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">ARUCANUMBER_Tutorial</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/不思議な探し物.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMBER" style="--theme-color: #ff5787; --theme-rgb: 255, 87, 135;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>戦闘曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 08</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">ARUCANUMBER_Battle</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Battle.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #c17a2e; --theme-rgb: 193, 122, 46;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>マップ選択の図書館で流れている曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 09</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">ARCNUMUSIC_Library</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/Library.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #0000ff; --theme-rgb: 0, 0, 255;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>スペードのマップ曲</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 10</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Blue_Map</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/BlueMap.mp3" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #0000ff; --theme-rgb: 0, 0, 255;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>スペードのボス曲</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 11</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Blue_Boss</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/BlueBoss.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #00ff00; --theme-rgb: 0, 255, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>クラブのマップ曲</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 12</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Green_Map</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/GreenMap.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #ffff00; --theme-rgb: 255, 255, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>ダイヤのマップ曲</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 13</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Yellow_Map</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/YellowMap.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="ARCNUMUSIC" style="--theme-color: #ffff00; --theme-rgb: 255, 255, 0;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>ダイヤのボス曲</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 14</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Yellow_Boss</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/YellowBoss.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="others" style="--theme-color: #c4fff8; --theme-rgb: 196, 255, 248;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>水の中で楽しく遊ぶ様子を想像した曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 15</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">Water_Music</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/unagiOp.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="FolderZipper" style="--theme-color: #72c0ff; --theme-rgb: 114, 192, 255;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>FolderZipperのタイトル曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 16</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">FolderZipper_OP</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/WindowOP4.wav" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item" data-category="FolderZipper" style="--theme-color: #72c0ff; --theme-rgb: 114, 192, 255;">
+                    <div class="info-badge">
+                        <span class="info-icon">i</span>
+                        <div class="info-tooltip">
+                            <h3>作品解説</h3>
+                            <p>FolderZipperのゲーム曲。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-typography">TRACK 17</div>
+                    <div class="music-icon-wrapper">
+                        <div class="pulse-ring"></div>
+                        <div class="music-icon" style="background-image: url('image/main2.png');">
+                            <div class="cd-reflect"></div>
+                            <div class="cd-inner"></div>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <div class="text-group">
+                            <div class="music-tags">
+                                <span class="tag"></span>
+                            </div>
+                            <h2 class="music-title">FolderZipper_Game</h2>
+                            <p class="artist-name"></p>
+                        </div>
+                        <div class="custom-player">
+                            <audio class="audio-element"><source src="audio/GameBGM4.mp3" type="audio/mpeg"></audio>
+                            <button class="play-btn">▶</button>
+                            <div class="controls-group">
+                                <div class="time-display"><span class="current-time">0:00</span><span class="duration-time">0:00</span></div>
+                                <input type="range" class="seek-bar" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>        
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -142,8 +697,13 @@
             </div>
         </div>
     </footer>
+
+    <div class="fixed-volume-control">
+        <div class="volume-icon">Vol</div>
+        <input type="range" class="global-volume-slider" min="0" max="1" step="0.01" value="0.5">
+        <div class="volume-value">50%</div>
+    </div>
     <script src="js/js.js"></script>
     <script src="js/music.js"></script>
 </body>
-
 </html>
