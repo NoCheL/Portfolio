@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     gap: 15px;
-    padding: 40px 20px 0; /* 下パディングを0にしてグリッドとの距離を調整 */
+    padding: 40px 20px 0;
     flex-wrap: wrap;
     max-width: 1100px;
     margin: 0 auto;

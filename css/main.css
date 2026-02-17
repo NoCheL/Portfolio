@@ -1,4 +1,4 @@
-/* ベース設定：背景に微細なノイズ感を持たせる */
+/* ベース設定：背景にノイズ */
 .profile-section {
     padding: 160px 0;
     background: radial-gradient(circle at 20% 30%, #161a24 0%, #0d0f14 100%);
@@ -8,7 +8,7 @@
 }
 
 
-/* ヘッダー：極限まで要素を削ぎ落としたスタイル */
+/* ヘッダー */
 .profile-header {
     margin-bottom: 80px;
 }
@@ -36,7 +36,7 @@
     align-items: start;
 }
 
-/* 左側：アバターとミニマルコンタクト */
+/* 左側 */
 .avatar-frame {
     position: relative;
     padding: 12px;
@@ -50,14 +50,14 @@
     width: 100%;
     display: block;
     /* フィルターを解除して本来の色を表示 */
-    filter: none; 
+    filter: none;
     opacity: 1;
     /* 動きを滑らかにする設定 */
     transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .avatar-frame:hover .profile-img {
-    /* ホバー時は色を変えず、わずかに拡大して「浮き上がる」演出に */
+    /* 浮き上がる演出に */
     filter: none;
     opacity: 1;
     transform: scale(1.05); /* 1.05倍に拡大 */
@@ -113,7 +113,7 @@
 
 .email-link:hover::after { width: 100%; }
 
-/* 右側：名前とプロフィールの設計 */
+/* 右側 */
 .user-name {
     font-size: 3.2rem;
     font-weight: 800;
@@ -164,7 +164,7 @@
     max-width: 520px;
 }
 
-/* スキルタグ：よりシャープな印象に */
+/* スキルタグ */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -187,7 +187,7 @@
     background: rgba(0, 198, 198, 0.05);
 }
 
-/* リンクボタン：クリックしたくなる精密なデザイン */
+/* リンクボタン */
 .link-terminal {
     margin-top: 70px;
     display: flex;
@@ -215,7 +215,7 @@
     transform: translateY(-3px);
 }
 
-/* スマホ対応：レイアウト破綻を防ぐ */
+/* スマホ対応 */
 @media screen and (max-width: 850px) {
     .profile-grid { grid-template-columns: 1fr; gap: 60px; }
     .profile-left { max-width: 280px; margin: 0 auto; }

@@ -12,7 +12,7 @@ function openTab(evt, tabName) {
 
     const activeTab = document.getElementById(tabName);
     activeTab.style.display = "block";
-    // 微小な遅延を置いてからactiveクラスをつけることでアニメーションを確実に発火させる
+    //遅延
     setTimeout(() => {
         activeTab.classList.add("active");
     }, 10);

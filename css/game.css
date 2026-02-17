@@ -1,10 +1,10 @@
 /* --- グリッドレイアウトの設定 --- */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     padding: 20px 20px 80px;
-    max-width: 1100px; /* Musicページと幅を統一 */
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -42,7 +42,7 @@
 
 /* --- カード本体 --- */
 .game-card {
-    --theme-color: #bb00ff; /* デフォルトを紫に設定 */
+    --theme-color: #bb00ff; /* デフォルト */
     width: 100%;
     height: 400px;
     position: relative;
@@ -102,7 +102,7 @@
 .date-badge .year { font-size: 12px; opacity: 0.8; }
 .date-badge .month { font-size: 20px; line-height: 1; }
 
-/* --- 説明エリア (すりガラス) --- */
+/* --- 説明エリア --- */
 .description {
     position: absolute;
     bottom: 0;
@@ -147,7 +147,6 @@
     color: rgba(255,255,255,0.7);
     line-height: 1.6;
     margin-bottom: 20px;
-    /* 3行以上は省略 */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

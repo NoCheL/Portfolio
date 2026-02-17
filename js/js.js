@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. ナビゲーション制御 (スクロール・ハンバーガー・ロック) ---
+    // --- ナビゲーション制御  ---
     const nav = document.getElementById('mainNav'); 
     const menuIcon = document.querySelector('.menu-icon');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    // A. スクロール検知：ナビゲーションの背景変化
+    // スクロール検知：ナビゲーションの背景変化
     const handleScroll = () => {
         if (window.scrollY > 50) {
             nav?.classList.add('scrolled');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
-    // B. ハンバーガーメニュー開閉
+    // ハンバーガーメニュー開閉
     if (menuIcon && navLinks) {
         menuIcon.addEventListener('click', () => {
             menuIcon.classList.toggle('active');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. 画像スライドショー (フェード切り替え) ---
+    // --- 画像スライドショー (フェード切り替え) ---
     const slides = document.querySelectorAll('.slide');
     let currentIndex = 0;
 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(showNextSlide, 6000);
     }
 
-    // --- 3. 梅の落下演出 ---
+    // --- 梅の落下演出 ---
     const PLUM_SVG_CONTENT = `
     <svg viewBox="60 110 90 90" xmlns="http://www.w3.org/2000/svg">
       <g>

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const volumeValueDisplay = document.querySelector('.volume-value');
     let currentVolume = globalVolumeSlider ? globalVolumeSlider.value : 0.8;
 
-    // --- 1. オーディオ制御ロジック ---
+    // --- オーディオ制御ロジック ---
     function formatTime(seconds) {
         if (isNaN(seconds) || seconds === Infinity) return "0:00";
         const min = Math.floor(seconds / 60);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 2. フィルタリングロジック ---
+    // --- フィルタリングロジック ---
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             players.forEach(p => {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. グローバルボリューム制御ロジック ---
+    // --- グローバルボリューム制御ロジック ---
     if (globalVolumeSlider) {
         globalVolumeSlider.addEventListener('input', (e) => {
             currentVolume = e.target.value;

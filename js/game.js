@@ -4,22 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // 1. アクティブなボタンの切り替え
+            //アクティブなボタンの切り替え
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // 2. フィルター値を取得 (all, ARCNUMBER, etc...)
+            //フィルター値を取得
             const filterValue = btn.getAttribute('data-filter');
 
             cards.forEach(card => {
-                // 3. カードのカテゴリー属性を取得
+                //カードのカテゴリー属性を取得
                 const cardCategory = card.getAttribute('data-category');
                 
-                // 4. 判定処理
+                //判定処理
                 if (filterValue === 'all' || cardCategory === filterValue) {
                     card.classList.remove('hidden');
                     
-                    // フェードイン演出
+                    //フェードイン
                     card.style.opacity = "0";
                     card.style.transform = "translateY(10px)";
                     setTimeout(() => {
