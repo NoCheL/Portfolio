@@ -4,29 +4,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            //アクティブなボタンの切り替え
-            filterBtns.forEach(b => b.classList.remove('active'));
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            //フィルター値を取得
-            const filterValue = btn.getAttribute('data-filter');
+            const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active'))
+                                       .map(b => b.getAttribute('data-filter'))
+                                       .filter(f => f !== 'all');
 
             cards.forEach(card => {
-                //カードのカテゴリー属性を取得
-                const cardCategory = card.getAttribute('data-category');
+                const cardCategories = card.getAttribute('data-category').split(' ');
                 
-                //判定処理
-                if (filterValue === 'all' || cardCategory === filterValue) {
-                    card.classList.remove('hidden');
-                    
-                    //フェードイン
-                    card.style.opacity = "0";
-                    card.style.transform = "translateY(10px)";
-                    setTimeout(() => {
-                        card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-                        card.style.opacity = "1";
-                        card.style.transform = "translateY(0)";
-                    }, 10);
+                const isShow = activeFilters.length === 0 || 
+                               activeFilters.every(f => cardCategories.includes(f));
+
+                if (isShow) {
+                    if (card.classList.contains('hidden')) {
+                        card.classList.remove('hidden');
+                        
+                        // フェードイン演出
+                        card.style.opacity = "0";
+                        card.style.transform = "translateY(10px)";
+                        setTimeout(() => {
+                            card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                            card.style.opacity = "1";
+                            card.style.transform = "translateY(0)";
+                        }, 10);
+                    }
                 } else {
                     card.classList.add('hidden');
                 }

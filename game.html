@@ -54,16 +54,27 @@
     </header>
 
     <main>
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">ALL</button>
-            <button class="filter-btn" data-filter="a2024">2024</button>
-            <button class="filter-btn" data-filter="a2025">2025</button>
-            <button class="filter-btn" data-filter="a2026">2026</button>
-            <button class="filter-btn" data-filter="anull">制作中</button>
-        </div>
+        <div class="filter-wrapper">
+            <div class="filter-group">
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="2024">2024</button>
+                    <button class="filter-btn" data-filter="2025">2025</button>
+                    <button class="filter-btn" data-filter="2026">2026</button>
+                    <button class="filter-btn" data-filter="null">制作中</button>
+                </div>
+            </div>
 
+            <div class="filter-group">
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="2D">2D</button>
+                    <button class="filter-btn" data-filter="3D">3D</button>
+                </div>
+            </div>
+        </div>
         <section class="game-container">
-            <div class="game-card" data-category="a2024" style="--theme-color: #bb00ff; --card-img: url('../image/game/ArcaNumber/game1.png');">
+            <div class="game-card" data-category="2024 2D" style="--theme-color: #bb00ff; --card-img: url('../image/game/ArcaNumber/game1.png');">
                 <div class="date-badge">
                     <span class="year">2024</span>
                     <span class="month">11</span>
@@ -82,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="game-card" data-category="a2025" style="--theme-color: #ff005d; --card-img: url('../image/game/ArcanuMusic/game2.png');">
+            <div class="game-card" data-category="2025 3D" style="--theme-color: #ff005d; --card-img: url('../image/game/ArcanuMusic/game2.png');">
                 <div class="date-badge">
                     <span class="year">2025</span>
                     <span class="month">04</span>
@@ -103,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="game-card" data-category="a2025" style="--theme-color: #aee9ff; --card-img: url('../image/game/nurutomo/game3.png');">
+            <div class="game-card" data-category="2025 2D" style="--theme-color: #aee9ff; --card-img: url('../image/game/nurutomo/game3.png');">
                 <div class="date-badge">
                     <span class="year">2025</span>
                     <span class="month">07</span>
@@ -122,7 +133,7 @@
                 </div>
             </div>
 
-            <div class="game-card" data-category="a2025" style="--theme-color: #50d0ff; --card-img: url('../image/game/FolderZIpper/game4.png');">
+            <div class="game-card" data-category="2025 2D" style="--theme-color: #50d0ff; --card-img: url('../image/game/FolderZIpper/FolderZipper_1');">
                 <div class="date-badge">
                     <span class="year">2025</span>
                     <span class="month">07</span>
@@ -141,7 +152,7 @@
                 </div>
             </div>
 
-            <div class="game-card" data-category="anull" style="--theme-color: #ff6600; --card-img: url('../image/main1.png');">
+            <div class="game-card" data-category="null 2D" style="--theme-color: #ff6600; --card-img: url('../image/main1.png');">
                 <div class="date-badge">
                     <span class="year">制作中</span>
                     <span class="month"></span>
