@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (type === 'video') {
                 if (!mainVideo.src.includes(src)) {
                     mainVideo.src = src;
-                    mainVideo.load(); // 読み込み開始
+                    mainVideo.load();
                 }
 
                 mainVideo.oncanplay = () => {
