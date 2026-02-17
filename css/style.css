@@ -276,7 +276,9 @@ body {
 
 /* スマホ用ヒーロー微調整 */
 @media screen and (max-width: 600px) {
-    .hero { height: 50vh; min-height: 400px; }
+    .slide img { width: 100%; }
+    .hero-inner { height: 80%; }
+    .hero { height: 20vh; min-height: 400px; }
     .hero-text { left: 5%; bottom: 5%; }
 }
 

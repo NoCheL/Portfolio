@@ -14,7 +14,7 @@ html, body {
 
 .one-screen-optimized {
     height: 100vh;
-    width: 100%; /* vwはスクロールバーを含むため100%を使用 */
+    width: 100%;
     overflow: hidden;
     background: #0b0c10;
     color: #fff;
@@ -104,11 +104,7 @@ html, body {
 .data-scroll-area::-webkit-scrollbar { width: 4px; }
 .data-scroll-area::-webkit-scrollbar-thumb { background: rgba(0, 198, 198, 0.3); border-radius: 10px; }
 
-/* --------------------------------------------------
-   スマートフォン向け最適化 (Mobile Layout)
-   -------------------------------------------------- */
 @media (max-width: 768px) {
-    /* 1. 横揺れの原因となる固定高さを解除し、幅を100%に強制 */
     .one-screen-optimized {
         height: auto;
         width: 100%;
@@ -116,23 +112,20 @@ html, body {
         position: relative;
     }
 
-    /* 2. ナビゲーションの余白調整 */
     .top-nav {
         height: 50px;
         padding: 0 15px;
         width: 100%;
     }
 
-    /* 3. グリッドを完全に捨てて縦並びへ。width:100%を徹底 */
     .main-dashboard {
-        display: block; /* gridやflexより安全 */
+        display: block;
         width: 100%;
         padding: 0;
         margin: 0;
         max-height: none;
     }
 
-    /* 4. ビジュアル：画面端ピッタリにする */
     .col-visual {
         width: 100%;
         padding: 0;
@@ -146,7 +139,6 @@ html, body {
         border-right: none;
     }
 
-    /* 5. サムネイル：100%の中で等分割。paddingではみ出させない */
     .gallery-row {
         width: 100%;
         height: auto;
@@ -156,7 +148,6 @@ html, body {
         gap: 8px;
     }
 
-    /* 6. データ：横幅100%の中で内側に余白を設定 */
     .col-data {
         width: 100%;
         padding: 20px 15px; /* 左右15pxの安全マージン */
@@ -166,11 +157,11 @@ html, body {
     .p-title {
         font-size: 1.8rem;
         width: 100%;
-        word-break: break-all; /* 長い単語での突き抜けを防止 */
+        word-break: break-all;
     }
 
     .data-scroll-area {
-        overflow: visible; /* スマホでは個別スクロールさせない */
+        overflow: visible;
         margin: 15px 0;
         padding-right: 0;
         width: 100%;
@@ -187,7 +178,6 @@ html, body {
         width: 100%;
         padding: 18px 15px;
         font-size: 13px;
-        /* hover時のtransformが原因で揺れることがあるので無効化 */
         transform: none !important;
     }
 
