@@ -19,16 +19,21 @@
     <main class="main-dashboard">
         <div class="col-visual">
             <div class="viewer-main" id="viewerMain">
-                <video id="mainVideo" class="content-item active" autoplay muted loop playsinline preload="auto" 
-                    poster="../image/game/ArcaNumber/game1.png"
-                    src="../Arcanumber_Web/movie/ARCANUMBER_Movie.mp4">
-                </video>
-                <img id="mainImage" class="content-item" src="" alt="">
+            <iframe 
+                id="mainYoutube" 
+                class="content-item active" 
+                src="https://www.youtube-nocookie.com/embed/JmGk6SGK-4g?autoplay=1&mute=1&loop=1&playlist=JmGk6SGK-4g&playsinline=1&controls=0" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+            <img id="mainImage" class="content-item" src="" alt="">
             </div>
+
             <div class="gallery-row">
-                <div class="thumb-item active" data-type="video" data-src="../Arcanumber_Web/movie/ARCANUMBER_Movie.mp4">
-                        <div class="thumb-label">VIDEO</div>
-                        <video src="../Arcanumber_Web/movie/ARCANUMBER_Movie.mp4" muted playsinline poster="../image/game/ArcaNumber/game1.png"></video>
+                <div class="thumb-item active" data-type="video" data-src="JmGk6SGK-4g">
+                    <div class="thumb-label">VIDEO</div>
+                    <img src="https://img.youtube.com/vi/JmGk6SGK-4g/mqdefault.jpg" alt="Video Thumbnail">
                 </div>
                 <div class="thumb-item" data-type="image" data-src="../image/game/ArcaNumber/ARCANUMBER_header.jpg">
                     <img src="../image/game/ArcaNumber/ARCANUMBER_header.jpg" alt="SS1">
@@ -41,7 +46,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-data">
             <header class="p-header">
                 <h1 class="p-title">ARCNUMBER</h1>

@@ -1,52 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainVideo = document.getElementById('mainVideo');
+    const mainYoutube = document.getElementById('mainYoutube');
     const mainImage = document.getElementById('mainImage');
     const thumbs = document.querySelectorAll('.thumb-item');
-
-    // --- 初期設定 ---
-    mainVideo.muted = true;
-    mainVideo.setAttribute('playsinline', '');
-
-    // 最初の読み込み時に真っ黒になるのを防ぐ
-    const startVideo = () => {
-        mainVideo.play().catch(e => {
-            console.log("初期再生失敗、ユーザー操作を待ちます");
-        });
-    };
-    startVideo();
 
     thumbs.forEach(thumb => {
         thumb.addEventListener('click', () => {
             const type = thumb.getAttribute('data-type');
-            let src = thumb.getAttribute('data-src');
-            
-            // スペース対策（念のため）
-            src = src.replace(/ /g, '%20');
+            const dataSrc = thumb.getAttribute('data-src');
 
-            // アクティブクラスの切り替え
+            // アクティブ表示の切り替え
             thumbs.forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
 
             if (type === 'video') {
                 mainImage.classList.remove('active');
-                mainVideo.classList.add('active');
+                mainYoutube.classList.add('active');
 
-                // ソースが異なる場合のみ更新
-                if (!mainVideo.src.includes(src)) {
-                    mainVideo.src = src;
-                    // スマホでは src を変えた後に play() を呼ぶことでロードが走る
-                    mainVideo.play().catch(e => console.log("再生失敗:", e));
-                } else {
-                    // 同じソースなら一時停止を解除するだけ
-                    mainVideo.play();
-                }
-
-            } else {
-                // 画像の場合
-                mainVideo.pause();
-                mainVideo.classList.remove('active');
+                const videoId = dataSrc; // JmGk6SGK-4g が入る
+                // エラー回避のため、playlistパラメータを確実に含める
+                const youtubeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
                 
-                mainImage.src = src;
+                if (!mainYoutube.src.includes(videoId)) {
+                    mainYoutube.src = youtubeUrl;
+                }
+            } else {
+                // 画像への切り替え
+                mainYoutube.classList.remove('active');
+                // 動画を止めるためにsrcを一時的に空にする
+                mainYoutube.src = ""; 
+                
+                mainImage.src = dataSrc;
                 mainImage.onload = () => mainImage.classList.add('active');
                 if (mainImage.complete) mainImage.classList.add('active');
             }
