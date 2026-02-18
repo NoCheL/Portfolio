@@ -11,26 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbs.forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
 
-            if (type === 'video') {
-                if (!mainVideo.src.includes(src)) {
-                    mainVideo.src = src;
-                    mainVideo.load();
-                }
-
-                mainVideo.oncanplay = () => {
+                if (type === 'video') {
+                    // 1. まず画像を隠し、動画を表示状態にする
                     mainImage.classList.remove('active');
                     mainVideo.classList.add('active');
-                    
-                    mainVideo.play().catch(e => {
-                        console.log("自動再生がブロックされました:", e);
-                    });
-                };
 
-                mainVideo.onerror = () => {
-                    console.error("動画の読み込みに失敗しました。パスを確認してください:", src);
-                };
+                    // 2. ソースが違う場合のみ入れ替え
+                    if (!mainVideo.src.includes(src)) {
+                        mainVideo.src = src;
+                        mainVideo.load(); // 読み込み開始
+                    }
 
-            } else {
+                    // 3. 【重要】イベントを待たず、このクリック関数内で直接再生を叩く
+                    // これによりブラウザが「ユーザーの意思」と認めてくれます
+                    const playPromise = mainVideo.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise.catch(e => {
+                            // 低電力モードなどの理由で失敗した場合のログ
+                            console.log("再生がブロックされました:", e);
+                        });
+                    }
+
+                } else {
                 mainVideo.pause();
                 mainVideo.classList.remove('active');
 
