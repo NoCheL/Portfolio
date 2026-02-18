@@ -3,52 +3,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('mainImage');
     const thumbs = document.querySelectorAll('.thumb-item');
 
+    // --- 初期設定 ---
+    mainVideo.muted = true;
+    mainVideo.setAttribute('playsinline', '');
+
+    // 最初の読み込み時に真っ黒になるのを防ぐ
+    const startVideo = () => {
+        mainVideo.play().catch(e => {
+            console.log("初期再生失敗、ユーザー操作を待ちます");
+        });
+    };
+    startVideo();
+
     thumbs.forEach(thumb => {
         thumb.addEventListener('click', () => {
             const type = thumb.getAttribute('data-type');
-            const src = thumb.getAttribute('data-src');
+            let src = thumb.getAttribute('data-src');
+            
+            // スペース対策（念のため）
+            src = src.replace(/ /g, '%20');
 
+            // アクティブクラスの切り替え
             thumbs.forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
 
-                if (type === 'video') {
-                    // 1. まず画像を隠し、動画を表示状態にする
-                    mainImage.classList.remove('active');
-                    mainVideo.classList.add('active');
+            if (type === 'video') {
+                mainImage.classList.remove('active');
+                mainVideo.classList.add('active');
 
-                    // 2. ソースが違う場合のみ入れ替え
-                    if (!mainVideo.src.includes(src)) {
-                        mainVideo.src = src;
-                        mainVideo.load(); // 読み込み開始
-                    }
-
-                    // 3. 【重要】イベントを待たず、このクリック関数内で直接再生を叩く
-                    // これによりブラウザが「ユーザーの意思」と認めてくれます
-                    const playPromise = mainVideo.play();
-
-                    if (playPromise !== undefined) {
-                        playPromise.catch(e => {
-                            // 低電力モードなどの理由で失敗した場合のログ
-                            console.log("再生がブロックされました:", e);
-                        });
-                    }
-
+                // ソースが異なる場合のみ更新
+                if (!mainVideo.src.includes(src)) {
+                    mainVideo.src = src;
+                    // スマホでは src を変えた後に play() を呼ぶことでロードが走る
+                    mainVideo.play().catch(e => console.log("再生失敗:", e));
                 } else {
+                    // 同じソースなら一時停止を解除するだけ
+                    mainVideo.play();
+                }
+
+            } else {
+                // 画像の場合
                 mainVideo.pause();
                 mainVideo.classList.remove('active');
-
-                // 画像のsrcをセットしてから表示
+                
                 mainImage.src = src;
-                
-                // 画像の読み込み完了を待ってからactiveにするとスムーズ
-                mainImage.onload = () => {
-                    mainImage.classList.add('active');
-                };
-                
-                // もし既にキャッシュされている場合はすぐ表示
-                if (mainImage.complete) {
-                    mainImage.classList.add('active');
-                }
+                mainImage.onload = () => mainImage.classList.add('active');
+                if (mainImage.complete) mainImage.classList.add('active');
             }
         });
     });
