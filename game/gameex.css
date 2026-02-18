@@ -87,7 +87,6 @@ html, body {
     border: none;
     width: 100%;
     height: 100%;
-    transform: scale(1.3); /* ロゴを隠すための拡大 */
     transform-origin: center center;
     pointer-events: none;
 }
