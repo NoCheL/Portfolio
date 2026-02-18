@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //フィルターボタンのイベントリスナーを設定
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.game-card');
 
