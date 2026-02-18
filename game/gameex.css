@@ -41,27 +41,26 @@ html, body {
 
 .col-visual { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
 
-/* ビューアー本体（親） */
+/* ビューアー本体（親）: ここからはみ出さないように設定 */
 .viewer-main {
     flex-grow: 1; 
     background: #000; 
     border: 1px solid rgba(255,255,255,0.1);
     position: relative; 
-    overflow: hidden; /* はみ出したYouTubeを隠す */
+    overflow: hidden; /* ★重要：拡大したYouTubeや画像をここでカットする */
     display: flex; 
     align-items: center; 
     justify-content: center;
 }
 
-/* --- 【新設】透明なガードパネル --- */
-/* これがYouTubeのタイトルの上に被さり、クリックを完全にブロックします */
+/* 透明なガードパネル: 枠いっぱいに広げ、クリックをブロック */
 .viewer-cover {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10; /* 動画や画像より上に配置 */
+    z-index: 10;
     background: transparent;
 }
 
@@ -83,15 +82,21 @@ html, body {
     visibility: visible;
 }
 
-/* YouTubeプレイヤーの拡大（バーを外に追いやる） */
+/* YouTubeプレイヤー: ロゴを消すために拡大しつつ、枠内に収める */
 #mainYoutube {
     border: none;
-    transform: scale(1.3); /* 1.3倍程度に拡大 */
+    width: 100%;
+    height: 100%;
+    transform: scale(1.3); /* ロゴを隠すための拡大 */
     transform-origin: center center;
+    pointer-events: none;
 }
 
+/* 画像: 枠内に綺麗に収める */
 img.content-item {
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像全体を枠内に収める（端を切らない） */
 }
 
 /* --- ギャラリー（サムネイル） --- */
@@ -140,10 +145,11 @@ img.content-item {
 
 /* --- モバイル対応 --- */
 @media (max-width: 768px) {
-    .one-screen-optimized { height: auto; overflow-y: auto; }
+    .one-screen-optimized { height: auto; overflow-y: auto; overflow-x: hidden; }
     .main-dashboard { display: block; padding: 0; max-height: none; }
-    .viewer-main { aspect-ratio: 16 / 9; }
+    .viewer-main { aspect-ratio: 16 / 9; width: 100%; }
     .gallery-row { padding: 10px 15px; }
     .col-data { padding: 20px 15px; border-left: none; }
     .p-title { font-size: 1.8rem; }
+    .footer-action { padding: 20px 15px; }
 }
