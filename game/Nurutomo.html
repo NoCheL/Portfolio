@@ -19,16 +19,21 @@
     <main class="main-dashboard">
         <div class="col-visual">
             <div class="viewer-main" id="viewerMain">
-                <video id="mainVideo" class="content-item active" autoplay muted loop playsinline>
-                    <source src="../movie/nurutomo_pv.mp4" type="video/mp4">
-                </video>
+                <iframe 
+                    id="mainYoutube" 
+                    class="content-item active" 
+                    src="https://www.youtube-nocookie.com/embed/QMgfOchesLI?autoplay=1&mute=1&loop=1&playlist=JmGk6SGK-4g&playsinline=1&controls=0" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
                 <img id="mainImage" class="content-item" src="" alt="">
             </div>
 
             <div class="gallery-row">
-                <div class="thumb-item active" data-type="video" data-src="../movie/nurutomo_pv.mp4">
+                <div class="thumb-item active" data-type="video" data-src="QMgfOchesLI">
                     <div class="thumb-label">VIDEO</div>
-                    <video src="../movie/nurutomo_pv.mp4" muted playsinline></video>
+                    <img src="https://img.youtube.com/vi/QMgfOchesLI/mqdefault.jpg" alt="Video Thumbnail">
                 </div>
                 <div class="thumb-item" data-type="image" data-src="../image/game/nurutomo/game3.png">
                     <img src="../image/game/nurutomo/game3.png" alt="SS1">

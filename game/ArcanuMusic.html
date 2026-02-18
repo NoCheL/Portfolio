@@ -19,15 +19,21 @@
     <main class="main-dashboard">
         <div class="col-visual">
             <div class="viewer-main" id="viewerMain">
-                <video id="mainVideo" class="content-item active" autoplay muted loop playsinline src="../ArcanuMusic_Web/movie/playmovie.mp4">
-                </video>
-                <img id="mainImage" class="content-item" src="" alt="">
+            <iframe 
+                id="mainYoutube" 
+                class="content-item active" 
+                src="https://www.youtube-nocookie.com/embed/-rtbd0eHPfw?autoplay=1&mute=1&loop=1&playlist=JmGk6SGK-4g&playsinline=1&controls=0" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+            <img id="mainImage" class="content-item" src="" alt="">
             </div>
 
             <div class="gallery-row">
-                <div class="thumb-item active" data-type="video" data-src="../ArcanuMusic_Web/movie/playmovie.mp4">
+                <div class="thumb-item active" data-type="video" data-src="-rtbd0eHPfw">
                     <div class="thumb-label">VIDEO</div>
-                    <video src="../ArcanuMusic_Web/movie/playmovie.mp4" muted playsinline></video>
+                    <img src="https://img.youtube.com/vi/-rtbd0eHPfw/mqdefault.jpg" alt="Video Thumbnail">
                 </div>
                 <div class="thumb-item" data-type="image" data-src="../image/game/ArcanuMusic/game2.png">
                     <img src="../image/game/ArcanuMusic/game2.png" alt="SS1">

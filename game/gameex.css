@@ -29,7 +29,7 @@ html, body {
 .exit-btn:hover { color: #00c6c6; }
 .exit-line { width: 25px; height: 1px; background: currentColor; }
 
-/* --- メインダッシュボード --- */
+/* --- メインダッシュボード (PC) --- */
 .main-dashboard {
     flex-grow: 1;
     display: grid;
@@ -39,23 +39,35 @@ html, body {
     max-height: calc(100vh - 80px);
 }
 
+/* YouTubeプレイヤーを「触れない状態」にする */
+#mainYoutube {
+    pointer-events: none; /* これが最重要：クリックやホバーを無効化 */
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
 .col-visual { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
 
-/* ビューアーの親要素：はみ出たロゴを隠す */
 .viewer-main {
     flex-grow: 1; 
     background: #000; 
     border: 1px solid rgba(255,255,255,0.1);
     position: relative; 
-    overflow: hidden;
+    overflow: hidden; 
     display: flex; 
     align-items: center; 
     justify-content: center;
+    transform: scale(1.15); /* 1.15倍くらいに拡大してロゴを枠外へ */
+    width: 100%;
+    height: 100%;
 }
 
-/* 共通アイテム設定 */
+/* YouTubeプレイヤーおよび画像アイテムの共通設定 */
 .content-item {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -65,21 +77,36 @@ html, body {
     background: #000;
 }
 
+/* --- YouTubeの「YouTube感」を消すための設定 --- */
+#mainYoutube {
+    pointer-events: none; /* 触らせない */
+    border: none;
+}
+
+#mainYoutube.content-item {
+    transform: scale(1.15); /* ロゴを枠の外へ隠す */
+    transform-origin: center center;
+}
+
+.viewer-main {
+    overflow: hidden; /* はみ出したロゴを見せない */
+}
+
+/* YouTube (iframe) 特有の設定 */
+iframe.content-item {
+    border: none;
+    /* pointer-events: none; により、YouTubeへのリンククリックを物理的に封じます */
+    pointer-events: none; 
+}
+
+/* アクティブな要素を表示 */
 .content-item.active {
     opacity: 1;
     visibility: visible;
     z-index: 2;
 }
 
-/* YouTubeプレイヤー固有設定 */
-#mainYoutube {
-    border: none;
-    pointer-events: none; 
-    transform: scale(1.15);
-    transform-origin: center center;
-}
-
-/* 画像表示の設定 */
+/* 画像表示時の調整 */
 img.content-item {
     object-fit: contain;
 }
@@ -90,13 +117,7 @@ img.content-item {
     border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
     position: relative; overflow: hidden; filter: grayscale(100%); transition: 0.3s;
 }
-
-.thumb-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+.thumb-item img, .thumb-item video { width: 100%; height: 100%; object-fit: cover; }
 .thumb-item.active, .thumb-item:hover { filter: grayscale(0%); border-color: #00c6c6; }
 .thumb-label {
     position: absolute; top: 5px; left: 5px; font-size: 8px; font-family: monospace;
@@ -136,15 +157,85 @@ img.content-item {
 
 /* --- モバイル対応 (768px以下) --- */
 @media (max-width: 768px) {
-    .one-screen-optimized { height: auto; width: 100%; overflow-y: auto; overflow-x: hidden; position: relative; }
-    .top-nav { height: 50px; padding: 0 15px; width: 100%; }
-    .main-dashboard { display: block; width: 100%; padding: 0; margin: 0; max-height: none; }
-    .col-visual { width: 100%; padding: 0; margin-bottom: 20px; }
-    .viewer-main { width: 100%; aspect-ratio: 16 / 9; border-left: none; border-right: none; }
-    .gallery-row { width: 100%; height: auto; padding: 10px 15px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .col-data { width: 100%; padding: 20px 15px; border-left: none; }
-    .p-title { font-size: 1.8rem; width: 100%; word-break: break-all; }
-    .data-scroll-area { overflow: visible; margin: 15px 0; padding-right: 0; width: 100%; }
-    .footer-action { width: 100%; padding: 20px 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .dl-action-btn { width: 100%; padding: 18px 15px; font-size: 13px; transform: none !important; }
+    .one-screen-optimized {
+        height: auto;
+        width: 100%;
+        overflow-y: auto; /* モバイルは縦に流れるのでautoに */
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .top-nav {
+        height: 50px;
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    .main-dashboard {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-height: none;
+    }
+
+    .col-visual {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .viewer-main {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* 黄金比で高さを維持 */
+        border-left: none;
+        border-right: none;
+    }
+
+    .gallery-row {
+        width: 100%;
+        height: auto;
+        padding: 10px 15px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .col-data {
+        width: 100%;
+        padding: 20px 15px;
+        border-left: none;
+    }
+
+    .p-title {
+        font-size: 1.8rem;
+        width: 100%;
+        word-break: break-all;
+    }
+
+    .data-scroll-area {
+        overflow: visible;
+        margin: 15px 0;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .footer-action {
+        width: 100%;
+        padding: 20px 15px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .dl-action-btn {
+        width: 100%;
+        padding: 18px 15px;
+        font-size: 13px;
+        transform: none !important;
+    }
+
+    .spec-row {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
 }
