@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME |  うらおもてタイピング</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="gameex.css">
+</head>
+<body class="one-screen-optimized">
+
+    <nav class="top-nav">
+        <a href="../game.html" class="exit-btn">
+            <span class="exit-line"></span>
+            <span class="exit-text">Back Page</span>
+        </a>
+    </nav>
+
+    <main class="main-dashboard">
+        <div class="col-visual">
+            <div class="viewer-main" id="viewerMain">
+                <div class="viewer-cover"></div>
+                <iframe 
+                    id="mainYoutube" 
+                    class="content-item active" 
+                    src="https://www.youtube-nocookie.com/embed/54a9dN_Ivwc?autoplay=1&mute=1&loop=1&playlist=54a9dN_Ivwc&playsinline=1&controls=0" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+                <img id="mainImage" class="content-item" src="" alt="">
+            </div>
+
+            <div class="gallery-row">
+                <div class="thumb-item active" data-type="video" data-src="54a9dN_Ivwc">
+                    <div class="thumb-label">VIDEO</div>
+                    <img src="https://img.youtube.com/vi/54a9dN_Ivwc/mqdefault.jpg" alt="Video Thumbnail">
+                </div>
+                <div class="thumb-item" data-type="image" data-src="../image/game/UraomoteTyping/Uraomote_title.png">
+                    <img src="../image/game/UraomoteTyping/Uraomote_title.png" alt="SS1">
+                </div>
+                <div class="thumb-item" data-type="image" data-src="../image/game/UraomoteTyping/uraomote_1.png">
+                    <img src="../image/game/UraomoteTyping/uraomote_1.png" alt="SS2">
+                </div>
+                <div class="thumb-item" data-type="image" data-src="../image/game/UraomoteTyping/uraomote_2.png">
+                    <img src="../image/game/UraomoteTyping/uraomote_2.png" alt="SS3">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-data">
+            <header class="p-header">
+                <h1 class="p-title">うらおもてタイピング</h1>
+                <div class="p-tags"><span>Unity</span><span>C#</span></div>
+            </header>
+
+            <div class="data-scroll-area">
+                <section class="data-section">
+                    <h2 class="label">制作・担当範囲</h2>
+                    <ul class="res-list">
+                        <li>
+                            <span class="r-tag">プログラミング</span>
+                            <p>タイトル、ＵＩ、チュートリアル、問題文</p>
+                        </li>
+                        <li>
+                            <span class="r-tag">BGM</span>
+                            <p>タイトル、ゲームメインBGMを作りました。</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="data-section">
+                    <h2 class="label">作品紹介</h2>
+                    <p class="desc-text">普通のタイピングと違う！？矢印や背景を読み取り指示に従ってタイピングをし、ハイスコアを目指そう！</p>
+                </section>
+            </div>
+
+            <footer class="footer-action">
+                <div class="spec-row">
+                    <div class="spec-cell"><span class="k">製作期間</span><span class="v">1週間</span></div>
+                    <div class="spec-cell"><span class="k">プラットフォーム</span><span class="v">PC (Windows):Web</span></div>
+                </div>
+                <a href="https://unityroom.com/games/uraomotetyping" class="dl-action-btn" target="_blank">
+                    <span class="btn-text">ゲームに移動</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </footer>
+        </div>
+    </main>
+
+    <script src="gameex.js"></script>
+</body>
+</html>
