@@ -509,7 +509,7 @@ button:hover {
 /* movie.css */
 .mainvideo{
 	width:70%;
-	height:70%;
+	aspect-ratio: 16 / 9;
   	margin: 25px 0 0 15%; /* 完全に中央に配置するため、上・左の margin を負の数に設定 */
 	padding-bottom: 70px;
 }
